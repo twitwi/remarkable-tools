@@ -9,7 +9,7 @@
 #
 #  header: 'reMarkable .lines file, version=3          '
 #  4 bytes integer: number of layers
-#  for each layer: 
+#  for each layer:
 #      4 bytes integer: number of strokes
 #      for each stroke:
 #          4 bytes integer: pen
@@ -49,7 +49,7 @@ stroke_colour={
 }'''
 
 
-def main():
+def main(args=sys.argv):
     parser = argparse.ArgumentParser(prog=__prog_name__)
     parser.add_argument('--height',
                         help='Desired height of image',
@@ -81,7 +81,7 @@ def main():
     parser.add_argument('--version',
                         action='version',
                         version='%(prog)s {version}'.format(version=__version__))
-    args = parser.parse_args()
+    args = parser.parse_args(args)
 
     if not os.path.exists(args.input):
         parser.error('The file "{}" does not exist!'.format(args.input))
@@ -137,7 +137,7 @@ def rm2svg(input_file, output_name, coloured_annotations=False,
 
     # Iterate through pages (There is at least one)
     output.write('<g id="p1" style="display:inline">')
-    
+
     # Iterate through layers on the page (There is at least one)
     for layer in range(nlayers):
         # print('New layer')
@@ -174,12 +174,12 @@ def rm2svg(input_file, output_name, coloured_annotations=False,
                 opacity = 0.9
             elif pen == 8: # Erase area
                 opacity = 0.
-            else: 
+            else:
                 print('Unknown pen: {}'.format(pen))
                 opacity = 0.
 
             width /= 2.3 # adjust for transformation to A4
-            
+
             #print('Stroke {}: pen={}, colour={}, width={}, nsegments={}'.format(stroke, pen, colour, width, nsegments))
             output.write('<polyline style="stroke-linecap:round;stroke-linejoin:bevel;fill:none;stroke:{};stroke-width:{:.3f};opacity:{}" points="'.format(stroke_colour[colour], width, opacity)) # BEGIN stroke
 
