@@ -25,7 +25,7 @@ function liveview() {
     (cd "$W" && $browser "view.html#$o.svg" &)
 
     ssh -C remarkable bash ./on-remarkable-watch.sh "$p" \
-    | python3 to-view.py
+    | python3 $W/to-view.py "$W/$o.rm" "$W/$o.svg"
 }
 
 liveview "$@"

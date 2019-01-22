@@ -3,11 +3,7 @@ import os
 import sys
 import asyncio
 import websockets
-
-import subprocess
-def run_cmd(*args):
-    return subprocess.call(args)
-
+from rm2svg import main as rm2svg
 
 sys.stdin = os.fdopen(sys.stdin.fileno(), 'rb', 0)
 
@@ -40,12 +36,12 @@ def read_chunk_from_stdin(n):
         return res
     return sub
 
-async def parse_input(ws_sv):
+async def parse_input(ws_sv, file_rm, file_svg):
     while True:
         try:
             line = await asyncio.get_event_loop().run_in_executor(None, read_line)
-        except e:
-            print("ERR", e, line)
+        except:
+            print("ERR", line)
             continue
         print("LINE:", line, len(all))
         if line == "START":
@@ -54,11 +50,23 @@ async def parse_input(ws_sv):
             print("READING", count)
             data = await asyncio.get_event_loop().run_in_executor(None, read_chunk_from_stdin(count))
             print("READ", len(data))
-            with open('TOTO.rm', 'wb') as f:
+            with open(file_rm, 'wb') as f:
                 f.write(data)
-            run_cmd("python3", "rm2svg.py", "-c", "-i", "TOTO.rm", "-o", "TOTO.svg")
-            for ws in all:
-                await ws.send("Salut "+str(len(all)))
+
+            try:
+                rm2svg(["-c", "-i", file_rm, "-o", file_svg])
+            except:
+                print("ERROR WITH RUNNING RM->SVG")
+
+            a = all.copy()
+            all[:] = []
+            for ws in a:
+                try:
+                    await ws.send("Salut "+str(len(all)))
+                    all.append(ws)
+                except:
+                    pass
+
         print(len(all))
         #await ws_server.send("SALUT!\n")
 
@@ -66,7 +74,7 @@ async def parse_input(ws_sv):
 ws_server = websockets.serve(log, 'localhost', 4257)
 
 asyncio.ensure_future(ws_server)
-asyncio.ensure_future(parse_input(ws_server))
+asyncio.ensure_future(parse_input(ws_server, sys.argv[1], sys.argv[2]))
 asyncio.get_event_loop().run_forever()
 
 # TODO write a rm2svg that reads from stdin (maybe) and ... set TODO

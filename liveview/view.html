@@ -60,11 +60,13 @@
 
             toggleInterval();
             toggleInterval();
-            //c1.checked = true ; applyRotate();
+            c1.checked = true ; applyRotate();
+
             var ws = new WebSocket("ws://localhost:4257");
             ws.addEventListener('message', function(...a) {
               refresh();
             });
+            refresh();
         </script>
     </body>
 </html>
