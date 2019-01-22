@@ -134,6 +134,14 @@ def rm2svg(input_file, output_name, coloured_annotations=False,
             }
         ]]> </script>
     ''')
+    output.write('''
+        <style>
+        .c0 { stroke: navy; }
+        .c1 { stroke: maroon; }
+        .c2 { stroke: lightgrey; }
+        .c3 { stroke: white; }
+        </style>
+    ''')
 
     # Iterate through pages (There is at least one)
     output.write('<g id="p1" style="display:inline">')
@@ -181,7 +189,7 @@ def rm2svg(input_file, output_name, coloured_annotations=False,
             width /= 2.3 # adjust for transformation to A4
 
             #print('Stroke {}: pen={}, colour={}, width={}, nsegments={}'.format(stroke, pen, colour, width, nsegments))
-            output.write('<polyline style="stroke-linecap:round;stroke-linejoin:bevel;fill:none;stroke:{};stroke-width:{:.3f};opacity:{}" points="'.format(stroke_colour[colour], width, opacity)) # BEGIN stroke
+            output.write('<polyline class="c{}" style="stroke-linecap:round;stroke-linejoin:bevel;fill:none;stroke-width:{:.3f};opacity:{}" points="'.format(colour, width, opacity)) # BEGIN stroke
 
             # Iterate through the segments to form a polyline
             for segment in range(nsegments):
