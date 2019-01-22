@@ -2,6 +2,10 @@
 
 # NB: This file will be copied to the remarkable tablet to be run there.
 
+getRemarkablePathOfLastEditedPage() {
+    ls -1tr .local/share/remarkable/xochitl/*/*.rm | tail -1
+}
+
 log() {
     echo "$@" 1>&2
 }
@@ -20,15 +24,32 @@ sendit() {
         echo END
 }
 
-sendit "$1"
+if test "$1" = "//" ; then
+  p=$(getRemarkablePathOfLastEditedPage)
+else
+  p="$1"
+fi
+
+sha=$(cat $0 | sha1sum | sed 's@ .*@@g')
+log $0
+log $sha
+log $2
+if test \! "$sha" = "$2" ; then
+  exit 123
+  # trigger re-scp
+fi
+
+log $1
+log $p
+sendit "$p"
 
 while true ; do
-    if test \! "$1" -ot "$last" ; then
-        size=$(cat "$1" | wc -c)
+    if test \! "$p" -ot "$last" ; then
+        size=$(cat "$p" | wc -c)
         if test "$size" -gt "$lastsize" -o "$size" -lt 100 ; then
             lastsize=$size
             touch "$last"
-            sendit "$1"
+            sendit "$p"
         fi
     else
         # show liveliness + trigger auto-kill on disconnection

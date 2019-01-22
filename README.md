@@ -7,23 +7,7 @@ The following tools are proposed:
 
 # Live view
 
-Need to install python3 and:
-~~~
-pip install asyncio
-pip install websockets
-~~~
-
-Then:
-~~~
-cd liveview
-./liveview.sh
-~~~
-
-It will:
-- connect to the "remarkable" host via SSH using keys (you have to set them up)
-- and, locally start a firefox to view the live document
-
-You once need to configure your `~/.ssh/config`:
+You first, once, need to configure your `~/.ssh/config`:
 ~~~
 Host remarkable
 User root
@@ -31,6 +15,26 @@ HostName 10.11.99.1
 # ^ this is via USB
 # or e.g., for a home wifi: HostName 192.168.1.14
 ~~~
+
+The tablet gives you its IP address in the settings panel in the "About" tab.
+It also gives you the SSH password.
+You should ideally create and setup SSH keys on the tablet to avoid typing the password every time.
+
+Also, you need to install python3 with a few packages:
+~~~
+pip install asyncio
+pip install websockets
+~~~
+
+Then:
+~~~
+./liveview/liveview.sh
+~~~
+
+It will:
+- connect to the "remarkable" host via SSH using your keys,
+- and, locally start a firefox to view the live document
+
 
 
 # Attribution
