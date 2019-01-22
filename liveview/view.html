@@ -24,20 +24,22 @@
             inter = -1;
             a = [i, j];
 
+            refresh = () => {
+              let a0 = a[0];
+              let a1 = a[1];
+              a0.onload = null;
+              a1.onload = () => {
+                a1.className = 'main';
+                a0.className = '';
+              };
+
+              a1.src = window.location.hash.substr(1)+'?'+Date.now();
+              a = [a1, a0];
+            }
+
             function toggleInterval() {
               if (inter == -1) {
-                inter = setInterval( ()=>{
-                  let a0 = a[0];
-                  let a1 = a[1];
-                  a0.onload = null;
-                  a1.onload = () => {
-                    a1.className = 'main';
-                    a0.className = '';
-                  };
-
-                  a1.src = window.location.hash.substr(1)+'?'+Date.now();
-                  a = [a1, a0];
-                }, 300);
+                inter = setInterval(refresh, 1000);
                 c2.checked = true;
               } else {
                 clearInterval(inter);
@@ -57,7 +59,12 @@
             }
 
             toggleInterval();
+            toggleInterval();
             //c1.checked = true ; applyRotate();
+            var ws = new WebSocket("ws://localhost:4257");
+            ws.addEventListener('message', function(...a) {
+              refresh();
+            });
         </script>
     </body>
 </html>

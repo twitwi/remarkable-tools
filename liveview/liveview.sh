@@ -25,24 +25,7 @@ function liveview() {
     (cd "$W" && $browser "view.html#$o.svg" &)
 
     ssh -C remarkable bash ./on-remarkable-watch.sh "$p" \
-        | \
-    while read i ; do
-        if [ "$i" = "START" ] ; then
-            echo "UPDATE"
-            read i
-            echo $i
-            # TODO avoid writing to file
-            head -c $i > "$o.rm"
-            continue
-        fi
-        if [ "$i" = "END" ] ; then
-            python3 rm2svg.py -c -i "$o.rm" -o "$o.svg"
-            echo "DONE"
-            continue
-        fi
-        echo "UNHANDLED: $i"
-    done
-
+    | python3 to-view.py
 }
 
 liveview "$@"
