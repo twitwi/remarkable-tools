@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Live View</title>
+        <style>
+        img { position: absolute; left:0; top:0; z-index: -1; border: 1px solid grey; }
+        img { visibility: hidden; }
+        img.main { visibility: visible; }
+        </style>
+    </head>
+    <body>
+
+        <img id="i" src="out.svg"></img>
+        <img id="j" src="out.svg"></img>
+        <input id="c1" type="checkbox" title="rotate"  onchange="applyRotate()"></input>
+        <input id="c2" type="checkbox" title="refresh" onchange="toggleInterval()"></input>
+
+        <script>
+            i = document.querySelector('#i');
+            j = document.querySelector('#j');
+            c1 = document.querySelector('#c1');
+            c2 = document.querySelector('#c2');
+            inter = -1;
+            a = [i, j];
+
+            function toggleInterval() {
+              if (inter == -1) {
+                inter = setInterval( ()=>{
+                  let a0 = a[0];
+                  let a1 = a[1];
+                  a0.onload = null;
+                  a1.onload = () => {
+                    a1.className = 'main';
+                    a0.className = '';
+                  };
+
+                  a1.src = window.location.hash.substr(1)+'?'+Date.now();
+                  a = [a1, a0];
+                }, 300);
+                c2.checked = true;
+              } else {
+                clearInterval(inter);
+                inter = -1;
+                c2.checked = false;
+              }
+            }
+
+            function applyRotate() {
+              if (c1.checked) {
+                 i.style = 'transform: rotate(90deg) translateY(-100%); transform-origin: top left;';
+                 j.style = 'transform: rotate(90deg) translateY(-100%); transform-origin: top left;';
+              } else {
+                 i.style = '';
+                 j.style = '';
+              }
+            }
+
+            toggleInterval();
+            //c1.checked = true ; applyRotate();
+        </script>
+    </body>
+</html>
