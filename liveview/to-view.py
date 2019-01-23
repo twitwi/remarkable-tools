@@ -19,6 +19,21 @@ def read_line(f=sys.stdin):
     return res.decode('utf-8')
 
 all = []
+async def rebuild_svg(file_rm, file_svg, notify=True):
+    try:
+        rm2svg(["-c", "-i", file_rm, "-o", file_svg])
+    except:
+        print("ERROR WITH RUNNING RM->SVG")
+
+    if notify:
+        a = all.copy()
+        all[:] = []
+        for ws in a:
+            try:
+                await ws.send("Salut "+str(len(all)))
+                all.append(ws)
+            except:
+                pass
 
 async def log(websocket, path):
     print("START LOG", websocket)
@@ -43,8 +58,10 @@ async def parse_input(ws_sv, file_rm, file_svg):
         except:
             print("ERR", line)
             continue
+
         print("LINE:", line, len(all))
-        if line == "START":
+
+        if line == "FULL":
             count = await asyncio.get_event_loop().run_in_executor(None, read_line)
             count = int(count)
             print("READING", count)
@@ -52,20 +69,42 @@ async def parse_input(ws_sv, file_rm, file_svg):
             print("READ", len(data))
             with open(file_rm, 'wb') as f:
                 f.write(data)
+            await asyncio.get_event_loop().run_in_executor(None, read_line) # read END
+            await rebuild_svg(file_rm, file_svg)
 
-            try:
-                rm2svg(["-c", "-i", file_rm, "-o", file_svg])
-            except:
-                print("ERROR WITH RUNNING RM->SVG")
+        elif line == "PATCH":
+            print("LINE", line)
+            patch = {}
+            more = b''
+            while True:
+                line = await asyncio.get_event_loop().run_in_executor(None, read_line)
+                if line == "APPEND":
+                    count = await asyncio.get_event_loop().run_in_executor(None, read_line)
+                    count = int(count)
+                    print("READING", count)
+                    more = await asyncio.get_event_loop().run_in_executor(None, read_chunk_from_stdin(count))
+                elif line == "TRUNC":
+                    size = await asyncio.get_event_loop().run_in_executor(None, read_line)
+                    size = int(size)
+                    print("TRUNC to", size)
+                    with open(file_rm, 'wb') as f:
+                        f.seek(size, 0)
+                        f.write(bytes([]))
+                elif line == "END":
+                    break
+                else:
+                    els = line.replace('  ', ' ').replace('  ', ' ').split(" ")
+                    if len(els) == 3:
+                        patch[int(els[0])] = int(els[2], 8)
 
-            a = all.copy()
-            all[:] = []
-            for ws in a:
-                try:
-                    await ws.send("Salut "+str(len(all)))
-                    all.append(ws)
-                except:
-                    pass
+            with open(file_rm, 'rb') as f:
+                content = bytearray(f.read())
+            for k,v in patch.items():
+                content[k-1] = v
+            content += more
+            with open(file_rm, 'wb') as f:
+                f.write(content)
+            await rebuild_svg(file_rm, file_svg)
 
         print(len(all))
         #await ws_server.send("SALUT!\n")
