@@ -71,6 +71,13 @@ log $p
 #sendfull "$p"
 
 while true ; do
+    if test "$1" = "//" ; then
+      newp=$(getRemarkablePathOfLastEditedPage)
+      if test "$newp" \!= "$p" ; then
+        p="$newp"
+        lastsize=0
+      fi
+    fi
     if test \! "$p" -ot "$last" -o "$lastsize" = 0 ; then
         size=$(wc -c < "$p")
         if test "$size" -ne "$lastsize" ; then
