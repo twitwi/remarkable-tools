@@ -11,7 +11,7 @@ log() {
 }
 
 log $@
-#ps aux |\grep 'on\-remarkable'|\grep -v -e "$2" |awk '{print $1}'|xargs kill
+ps | \grep 'on\-remarkable' | awk '{ print $1 }' | \grep -v "^$$\$" | awk '{print $1}' | xargs kill
 
 last=$(mktemp)
 lastsize=0
