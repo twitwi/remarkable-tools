@@ -87,9 +87,10 @@ async def parse_input(ws_sv, file_rm, file_svg):
                     size = await asyncio.get_event_loop().run_in_executor(None, read_line)
                     size = int(size)
                     print("TRUNC to", size)
+                    with open(file_rm, 'rb') as f:
+                        content = f.read()
                     with open(file_rm, 'wb') as f:
-                        f.seek(size, 0)
-                        f.write(bytes([]))
+                        f.write(content[:size])
                 elif line == "END":
                     break
                 else:
@@ -100,7 +101,10 @@ async def parse_input(ws_sv, file_rm, file_svg):
             with open(file_rm, 'rb') as f:
                 content = bytearray(f.read())
             for k,v in patch.items():
-                content[k-1] = v
+                try:
+                    content[k-1] = v
+                except:
+                    print("ERR PATCH", k, v)
             content += more
             with open(file_rm, 'wb') as f:
                 f.write(content)
