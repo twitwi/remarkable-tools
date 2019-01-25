@@ -26,6 +26,8 @@ pip install asyncio
 pip install websockets
 ~~~
 
+If you don't have it (and if you annotated pdfs) you need to install `convert` (Image Magick).
+
 Then:
 ~~~
 ./liveview/liveview.sh
