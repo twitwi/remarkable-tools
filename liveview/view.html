@@ -4,19 +4,24 @@
         <meta charset="utf-8">
         <title>Live View</title>
         <style>
-        img { position: absolute; left:0; top:0; z-index: -1; border: 1px solid grey; }
+        img, #bg { position: absolute; left:0; top:0; z-index: -1; border: 1px solid grey; }
         img { visibility: hidden; }
         img.main { visibility: visible; }
+        img#bgim { visibility: visible; }
+        div#bg { width: 1404px; height: 1872px; }
         </style>
     </head>
     <body>
 
+        <div id="bg"><img id="bgim"></img></div>
         <img id="i" src="out.svg"></img>
         <img id="j" src="out.svg"></img>
         <input id="c1" type="checkbox" title="rotate"  onchange="applyRotate()"></input>
         <input id="c2" type="checkbox" title="refresh" onchange="toggleInterval()"></input>
 
         <script>
+            bg = document.querySelector('#bg');
+            bgim = document.querySelector('#bgim');
             i = document.querySelector('#i');
             j = document.querySelector('#j');
             c1 = document.querySelector('#c1');
@@ -36,6 +41,10 @@
               a1.src = window.location.hash.substr(1)+'?'+Date.now();
               a = [a1, a0];
             }
+            refreshBackground = (clr) => {
+              if (clr) bgim.src = ""
+              else bgim.src = window.location.hash.substr(1)+'.png?'+Date.now();
+            }
 
             function toggleInterval() {
               if (inter == -1) {
@@ -50,11 +59,13 @@
 
             function applyRotate() {
               if (c1.checked) {
+                 bg.style = 'transform: rotate(90deg) translateY(-100%); transform-origin: top left;';
                  i.style = 'transform: rotate(90deg) translateY(-100%); transform-origin: top left;';
                  j.style = 'transform: rotate(90deg) translateY(-100%); transform-origin: top left;';
               } else {
-                 i.style = '';
+                 bg.style = '';
                  j.style = '';
+                 i.style = '';
               }
             }
 
@@ -63,8 +74,12 @@
             c1.checked = true ; applyRotate();
 
             var ws = new WebSocket("ws://localhost:4257");
-            ws.addEventListener('message', function(...a) {
-              refresh();
+            ws.addEventListener('message', function({data, ...o}) {
+              console.log("DATA", data)
+              if (data == 'svg') refresh()
+              else if (data == 'background') refreshBackground()
+              else if (data == 'rmbackground') refreshBackground(true)
+              else console.log(data)
             });
             refresh();
         </script>

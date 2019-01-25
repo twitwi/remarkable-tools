@@ -1,9 +1,16 @@
 
 import os
+import re
 import sys
 import asyncio
 import websockets
 from rm2svg import main as rm2svg
+
+# waiting for the command to end, returning the return value
+import subprocess
+def run_cmd(*args):
+    return subprocess.call(args)
+
 
 sys.stdin = os.fdopen(sys.stdin.fileno(), 'rb', 0)
 
@@ -19,6 +26,16 @@ def read_line(f=sys.stdin):
     return res.decode('utf-8')
 
 all = []
+async def notify_all(msg, all=all):
+    a = all.copy()
+    all[:] = []
+    for ws in a:
+        try:
+            await ws.send(msg)
+            all.append(ws)
+        except:
+            pass
+
 async def rebuild_svg(file_rm, file_svg, notify=True):
     try:
         rm2svg(["-c", "-i", file_rm, "-o", file_svg])
@@ -26,17 +43,14 @@ async def rebuild_svg(file_rm, file_svg, notify=True):
         print("ERROR WITH RUNNING RM->SVG")
 
     if notify:
-        a = all.copy()
-        all[:] = []
-        for ws in a:
-            try:
-                await ws.send("Salut "+str(len(all)))
-                all.append(ws)
-            except:
-                pass
+        await notify_all("svg")
 
+pdf = False
 async def log(websocket, path):
+    global pdf
     print("START LOG", websocket)
+    if pdf:
+        await notify_all("background", all=[websocket])
     all.append(websocket)
     async for message in websocket:
         print("MESSAGE", message)
@@ -51,8 +65,10 @@ def read_chunk_from_stdin(n):
         return res
     return sub
 
-async def parse_input(ws_sv, file_rm, file_svg):
+async def parse_input(ws_sv, file_rm, file_svg, file_pdf):
+    global pdf
     while True:
+
         try:
             line = await asyncio.get_event_loop().run_in_executor(None, read_line)
         except:
@@ -64,14 +80,34 @@ async def parse_input(ws_sv, file_rm, file_svg):
         if line == "FULL":
             count = await asyncio.get_event_loop().run_in_executor(None, read_line)
             count = int(count)
-            print("READING", count)
+            print("READING FULL", count)
             data = await asyncio.get_event_loop().run_in_executor(None, read_chunk_from_stdin(count))
             print("READ", len(data))
             with open(file_rm, 'wb') as f:
                 f.write(data)
             await asyncio.get_event_loop().run_in_executor(None, read_line) # read END
             await rebuild_svg(file_rm, file_svg)
-
+        elif line == "PAGE":
+            page = await asyncio.get_event_loop().run_in_executor(None, read_line)
+            page = re.sub(r'.*/', '', page)[:-3]
+            if pdf:
+                # TODO handle rotated pdf....
+                # 1872×1404 55px
+                run_cmd('./convert_pdf_page_autorotate.sh', file_pdf, page, file_svg+'.png')
+                await notify_all("background")
+        elif line == "NOPDF":
+            pdf = False
+            await notify_all("rmbackground")
+        elif line == "PDF":
+            count = await asyncio.get_event_loop().run_in_executor(None, read_line)
+            count = int(count)
+            print("READING PDF", count)
+            pdf = True
+            data = await asyncio.get_event_loop().run_in_executor(None, read_chunk_from_stdin(count))
+            print("READ", len(data))
+            with open(file_pdf, 'wb') as f:
+                f.write(data)
+            await asyncio.get_event_loop().run_in_executor(None, read_line) # read END
         elif line == "PATCH":
             print("LINE", line)
             patch = {}
@@ -117,7 +153,7 @@ async def parse_input(ws_sv, file_rm, file_svg):
 ws_server = websockets.serve(log, 'localhost', 4257)
 
 asyncio.ensure_future(ws_server)
-asyncio.ensure_future(parse_input(ws_server, sys.argv[1], sys.argv[2]))
+asyncio.ensure_future(parse_input(ws_server, *sys.argv[1:]))
 asyncio.get_event_loop().run_forever()
 
 # TODO write a rm2svg that reads from stdin (maybe) and ... set TODO

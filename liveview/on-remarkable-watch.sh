@@ -4,7 +4,15 @@
 
 getRemarkablePathOfLastEditedPage() {
     ls -1tr .local/share/remarkable/xochitl/*/*.rm | tail -1
+
+    # not sure how to get the latest "viewed" page
+    #local f
+    #local i
+    #f=$(ls -tr1d .local/share/remarkable/xochitl/*-???????????? | tail -1)
+    #i=$(cd "$f".cache && ls -tr1 *.* | tail -1 | sed 's@\..*$@@g')
+    #echo "$f/$i.rm"
 }
+
 
 log() {
     echo "$@" 1>&2
@@ -17,8 +25,23 @@ last=$(mktemp)
 now=$(mktemp)
 err=$(mktemp)
 lastsize=0
+
 log $last
 
+sendpageinfo() {
+  echo PAGE
+  echo "$1"
+}
+sendnopdf() {
+  echo NOPDF
+}
+sendpdf() {
+  # TODO handle rotated pdf
+  echo PDF
+  wc -c < "$1"
+  cat "$1"
+  echo END
+}
 sendfull() {
   echo FULL
   wc -c < "$1"
@@ -51,11 +74,13 @@ sendauto() { # "$diff" "$err_f" "$last_f" "$now_f" "$lastsize" "$size"
   fi
 }
 
-if test "$1" = "//" ; then
-  p=$(getRemarkablePathOfLastEditedPage)
-else
-  p="$1"
-fi
+#if test "$1" = "//" ; then
+#  p=$(getRemarkablePathOfLastEditedPage)
+#else
+#  p="$1"
+#fi
+#f=$(dirname "$p")
+p=""
 
 sha=$(cat $0 | sha1sum | sed 's@ .*@@g')
 log $0
@@ -76,6 +101,15 @@ while true ; do
       if test "$newp" \!= "$p" ; then
         p="$newp"
         lastsize=0
+        f=$(dirname "$p")
+        if test "$f" \!= "$lastf" -a -f "$f.pdf"; then
+          sendpdf "$f.pdf"
+          lastf="$f"
+        else
+          sendnopdf
+          lastf=""
+        fi
+        sendpageinfo "$p"
       fi
     fi
     if test \! "$p" -ot "$last" -o "$lastsize" = 0 ; then
