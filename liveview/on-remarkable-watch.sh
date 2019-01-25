@@ -102,12 +102,13 @@ while true ; do
         p="$newp"
         lastsize=0
         f=$(dirname "$p")
-        if test "$f" \!= "$lastf" -a -f "$f.pdf"; then
-          sendpdf "$f.pdf"
-          lastf="$f"
-        else
+        log $f $lastf
+        if test \! -f "$f.pdf" ; then
           sendnopdf
           lastf=""
+        elif test "$f" \!= "$lastf"; then
+          sendpdf "$f.pdf"
+          lastf="$f"
         fi
         sendpageinfo "$p"
       fi
