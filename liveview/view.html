@@ -9,6 +9,9 @@
         img.main { visibility: visible; }
         img#bgim { visibility: visible; }
         div#bg { width: 1404px; height: 1872px; }
+        #advanced { display: inline-block; background: yellow; box-sizing: border-box; border: 1px solid black; border-radius: 5px; }
+        #advanced * { margin: 10px; }
+        #advanced:not(:hover) { width: 1em; height: 1em; overflow: hidden; }
         </style>
     </head>
     <body>
@@ -16,7 +19,11 @@
         <div id="bg"><img id="bgim"></img></div>
         <img id="i" src="out.svg"></img>
         <img id="j" src="out.svg"></img>
-        <input id="c1" type="checkbox" title="rotate"  onchange="applyRotate()"></input>
+        <div id="advanced">
+          <label><input id="c1" type="checkbox" title="rotate"  onchange="applyRotate()"></input> rotate</label>
+          <br/>
+          <button onclick="ws.send('preload-bg')">preload background</button>
+        </div>
         <div id="info"></div>
 
         <script>
@@ -55,7 +62,7 @@
 
             refreshBackground = (p) => {
               if (p === "CLEAR") bgim.src = ""
-              else bgim.src = window.location.hash.substr(1)+'.pdf-'+p+'.png?'+Date.now();
+              else bgim.src = window.location.hash.substr(1)+'.pdf-'+p+'.jpg?'+Date.now();
             }
 
             applyRotate = () => {

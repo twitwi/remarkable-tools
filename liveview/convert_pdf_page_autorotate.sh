@@ -6,7 +6,7 @@ page="$2"
 out="$3"
 
 which convert || {
-  cp "${out%/*}/convert-missing.png" "${out}"
+  cp "${out%/*}/convert-missing.${out##*.}" "${out}"
   exit
 }
 
@@ -47,4 +47,4 @@ go() {
   "$@"
 }
 
-go convert -density 200 "$pagepath" $rotate $tr "$out"
+go convert -density 200 "$pagepath" $rotate $tr -background white -flatten "$out"

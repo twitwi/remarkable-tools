@@ -46,18 +46,43 @@ async def rebuild_svg(file_rm, file_svg, notify=True):
     if notify:
         await notify_all("svg")
 
+async def lazy_generate_img_for_page(file_pdf, page, convert_pdf_page_autorotate):
+    page = str(page)
+    o_img = file_pdf+'-'+page+'.jpg'
+    # special case to delete "convert-missing.jpg" copies"
+    convert_missing = re.sub(r'/[^/]*$', '/convert-missing.jpg', o_img)
+    if os.path.isfile(o_img) and os.path.getsize(o_img) == os.path.getsize(convert_missing):
+        print("Removing", o_img)
+        os.remove(o_img)
+    if not os.path.isfile(o_img):
+        await notify_all("info:converting PDF page "+page)
+        r =run_cmd(convert_pdf_page_autorotate, file_pdf, page, o_img)
+        await notify_all("info-done:converting PDF page "+page)
+        return r == 0
+    return True
+
+async def lazy_generate_img_for_all_pages(file_pdf, convert_pdf_page_autorotate, max=100):
+    for p in range(max):
+        r = await lazy_generate_img_for_page(file_pdf, p, convert_pdf_page_autorotate)
+        if not r:
+            break
+
 g_pdf = False
 g_page = 0
-async def log(websocket, path):
-    global g_pdf
-    print("START LOG", websocket)
-    if g_pdf:
-        await notify_all("background:"+str(g_page), all=[websocket])
-    all.append(websocket)
-    async for message in websocket:
-        print("MESSAGE", message)
-        #await websocket.send(message)
-    print("END LOG")
+def handle_client(file_rm, file_svg, file_pdf, convert_pdf_page_autorotate):
+    async def h(websocket, path):
+        global g_pdf
+        print("START LOG", websocket)
+        if g_pdf:
+            await notify_all("background:"+str(g_page), all=[websocket])
+        all.append(websocket)
+        async for message in websocket:
+            print("MESSAGE", message)
+            #await websocket.send(message)
+            if message == "preload-bg":
+                asyncio.ensure_future(lazy_generate_img_for_all_pages(file_pdf, convert_pdf_page_autorotate))
+        print("END LOG")
+    return h
 
 def read_chunk_from_stdin(n):
     def sub():
@@ -97,16 +122,7 @@ async def parse_input(ws_sv, file_rm, file_svg, file_pdf, convert_pdf_page_autor
             page = re.sub(r'.*/', '', page)[:-3]
             if g_pdf:
                 g_page = page
-                o_png = file_pdf+'-'+page+'.png'
-                # special case to delete "convert-missing.png" copies"
-                convert_missing = re.sub(r'/[^/]*$', '/convert-missing.png', o_png)
-                if os.path.isfile(o_png) and os.path.getsize(o_png) == os.path.getsize(convert_missing):
-                    print("Removing", o_png)
-                    os.remove(o_png)
-                if not os.path.isfile(o_png):
-                    await notify_all("info:converting PDF page "+str(page))
-                    run_cmd(convert_pdf_page_autorotate, file_pdf, page, o_png)
-                    await notify_all("info-done:converting PDF page "+str(page))
+                await lazy_generate_img_for_page(file_pdf, page, convert_pdf_page_autorotate)
                 await notify_all("background:"+str(page))
         elif line == "NOPDF":
             g_pdf = False
@@ -127,7 +143,7 @@ async def parse_input(ws_sv, file_rm, file_svg, file_pdf, convert_pdf_page_autor
             if data != prev_content:
                 with open(file_pdf, 'wb') as f:
                     f.write(data)
-                for p in glob.glob(file_pdf+'-*.png'):
+                for p in glob.glob(file_pdf+'-*.jpg'):
                     os.remove(p)
             await asyncio.get_event_loop().run_in_executor(None, read_line) # read END
         elif line == "PATCH":
@@ -172,10 +188,8 @@ async def parse_input(ws_sv, file_rm, file_svg, file_pdf, convert_pdf_page_autor
         #await ws_server.send("SALUT!\n")
 
 #inreader = asyncio.StreamReader(sys.stdin)
-ws_server = websockets.serve(log, 'localhost', 4257)
+ws_server = websockets.serve(handle_client(*sys.argv[1:]), 'localhost', 4257)
 
 asyncio.ensure_future(ws_server)
 asyncio.ensure_future(parse_input(ws_server, *sys.argv[1:]))
 asyncio.get_event_loop().run_forever()
-
-# TODO write a rm2svg that reads from stdin (maybe) and ... set TODO
