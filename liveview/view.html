@@ -4,11 +4,14 @@
         <meta charset="utf-8">
         <title>Live View</title>
         <style>
+        html { --zoom: 0.3; }
+
         body.invert { background: black; filter: invert(100%); }
-        img, #bg { position: absolute; left:0; top:0; z-index: -1; border: 1px solid grey; }
-        img { visibility: hidden; }
-        img.main { visibility: visible; }
-        img#bgim { visibility: visible; }
+        .display { position: absolute; left:0; top:0; z-index: -1; border: 1px solid grey; transform: scale(var(--zoom)); transform-origin: top left; }
+        .rotate { transform: scale(var(--zoom)) rotate(90deg) translateY(-100%); }
+        body>img.display { visibility: hidden; }
+        body>img.display.main { visibility: visible; }
+
         div#bg { width: 1404px; height: 1872px; }
         #advanced { display: inline-block; background: #FFFF88; box-sizing: border-box; border: 1px solid black; border-radius: 5px; }
         #advanced * { margin: 10px; }
@@ -17,14 +20,20 @@
     </head>
     <body>
 
-        <div id="bg"><img id="bgim"></img></div>
-        <img id="i" src="out.svg"></img>
-        <img id="j" src="out.svg"></img>
+        <div id="bg" class="display"><img id="bgim"></img></div>
+        <img id="i" class="display" src="out.svg"></img>
+        <img id="j" class="display" src="out.svg"></img>
         <div id="advanced">
           <label><input id="c1" type="checkbox" title="rotate"  onchange="applyRotate()"></input> rotate</label>
+          <br/>
           <label><input id="c2" type="checkbox" title="invert colors"  onchange="applyInvert()"></input> invert</label>
           <br/>
+             Zoom:
+          <input id="c3" type="range" min="0.1" max="1.3" step="0.1" title="zoom" onchange="applyZoom(this.value)"></input>
+          <input type="number" id="c4" step="0.1" onchange="applyZoom(this.value)"></input>
+          <hr/>
           <button onclick="ws.send('preload-bg')">preload background</button>
+          <button onclick="localStorage.clear()">reset (for next reload)</button>
         </div>
         <div id="info"></div>
 
@@ -36,6 +45,8 @@
             j = document.querySelector('#j')
             c1 = document.querySelector('#c1')
             c2 = document.querySelector('#c2')
+            c3 = document.querySelector('#c3')
+            c4 = document.querySelector('#c4')
             info = document.querySelector('#info')
 
             addInfo = (inf) => {
@@ -55,8 +66,8 @@
               let a1 = a[1];
               a0.onload = null;
               a1.onload = () => {
-                a1.className = 'main';
-                a0.className = '';
+                a1.classList.add('main')
+                a0.classList.remove('main')
               };
 
               a1.src = window.location.hash.substr(1)+'.svg?'+Date.now();
@@ -70,20 +81,20 @@
 
             applyRotate = () => {
               localStorage.setItem('rotate', c1.checked)
-              if (c1.checked) {
-                 bg.style = 'transform: rotate(90deg) translateY(-100%); transform-origin: top left;';
-                 i.style = 'transform: rotate(90deg) translateY(-100%); transform-origin: top left;';
-                 j.style = 'transform: rotate(90deg) translateY(-100%); transform-origin: top left;';
-              } else {
-                 bg.style = '';
-                 j.style = '';
-                 i.style = '';
-              }
+              bg.classList.toggle('rotate', c1.checked)
+              i.classList.toggle('rotate', c1.checked)
+              j.classList.toggle('rotate', c1.checked)
             }
 
             applyInvert = () => {
               localStorage.setItem('invert', c2.checked)
               document.body.classList.toggle('invert', c2.checked)
+            }
+
+            applyZoom = (v) => {
+              localStorage.setItem('zoom', v)
+              document.body.parentElement.style.setProperty('--zoom', v)
+              c3.value = c4.value = v
             }
 
             REST = ""
@@ -101,6 +112,8 @@
             applyRotate()
             c2.checked = localStorage.getItem('invert') == 'true'
             applyInvert()
+            _z = localStorage.getItem('zoom') || 1
+            applyZoom(_z)
 
             var ws = new WebSocket("ws://localhost:4257");
             ws.addEventListener('message', function({data, ...o}) {
