@@ -17,7 +17,6 @@
         <img id="i" src="out.svg"></img>
         <img id="j" src="out.svg"></img>
         <input id="c1" type="checkbox" title="rotate"  onchange="applyRotate()"></input>
-        <input id="c2" type="checkbox" title="refresh" onchange="toggleInterval()"></input>
 
         <script>
             bg = document.querySelector('#bg');
@@ -46,17 +45,6 @@
               else bgim.src = window.location.hash.substr(1)+'.pdf-'+p+'.png?'+Date.now();
             }
 
-            function toggleInterval() {
-              if (inter == -1) {
-                inter = setInterval(refresh, 1000);
-                c2.checked = true;
-              } else {
-                clearInterval(inter);
-                inter = -1;
-                c2.checked = false;
-              }
-            }
-
             function applyRotate() {
               if (c1.checked) {
                  bg.style = 'transform: rotate(90deg) translateY(-100%); transform-origin: top left;';
@@ -79,8 +67,6 @@
               return false
             }
 
-            toggleInterval();
-            toggleInterval();
             c1.checked = true ; applyRotate();
 
             var ws = new WebSocket("ws://localhost:4257");
