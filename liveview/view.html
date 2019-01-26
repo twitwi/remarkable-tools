@@ -17,17 +17,29 @@
         <img id="i" src="out.svg"></img>
         <img id="j" src="out.svg"></img>
         <input id="c1" type="checkbox" title="rotate"  onchange="applyRotate()"></input>
+        <div id="info"></div>
 
         <script>
-            bg = document.querySelector('#bg');
-            bgim = document.querySelector('#bgim');
-            i = document.querySelector('#i');
-            j = document.querySelector('#j');
-            c1 = document.querySelector('#c1');
-            c2 = document.querySelector('#c2');
-            inter = -1;
-            a = [i, j];
+            bg = document.querySelector('#bg')
+            bgim = document.querySelector('#bgim')
+            i = document.querySelector('#i')
+            j = document.querySelector('#j')
+            c1 = document.querySelector('#c1')
+            c2 = document.querySelector('#c2')
+            info = document.querySelector('#info')
 
+            addInfo = (inf) => {
+              let e = document.createElement('div')
+              e.textContent = inf
+              info.append(e)
+            }
+            removeInfo = (inf) => {
+              document.querySelectorAll('#info>div').forEach( (e) => {
+                if (e.textContent == inf) info.removeChild(e)
+              });
+            }
+
+            a = [i, j];
             refresh = () => {
               let a0 = a[0];
               let a1 = a[1];
@@ -40,12 +52,13 @@
               a1.src = window.location.hash.substr(1)+'.svg?'+Date.now();
               a = [a1, a0];
             }
+
             refreshBackground = (p) => {
               if (p === "CLEAR") bgim.src = ""
               else bgim.src = window.location.hash.substr(1)+'.pdf-'+p+'.png?'+Date.now();
             }
 
-            function applyRotate() {
+            applyRotate = () => {
               if (c1.checked) {
                  bg.style = 'transform: rotate(90deg) translateY(-100%); transform-origin: top left;';
                  i.style = 'transform: rotate(90deg) translateY(-100%); transform-origin: top left;';
@@ -58,7 +71,7 @@
             }
 
             REST = ""
-            function startsWith(all, beg) {
+            startsWith = (all, beg) => {
               REST = ""
               if (all.startsWith(beg)) {
                 REST = all.substr(beg.length)
@@ -67,6 +80,7 @@
               return false
             }
 
+            // default rotated?
             c1.checked = true ; applyRotate();
 
             var ws = new WebSocket("ws://localhost:4257");
@@ -74,6 +88,8 @@
               console.log("DATA", data)
               if (data == 'svg') refresh()
               else if (startsWith(data, 'background:')) refreshBackground(REST)
+              else if (startsWith(data, 'info:')) addInfo(REST)
+              else if (startsWith(data, 'info-done:')) removeInfo(REST)
               else if (data == 'rmbackground') refreshBackground("CLEAR")
               else console.log(data)
             });

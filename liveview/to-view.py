@@ -83,7 +83,9 @@ async def parse_input(ws_sv, file_rm, file_svg, file_pdf, convert_pdf_page_autor
             count = await asyncio.get_event_loop().run_in_executor(None, read_line)
             count = int(count)
             print("READING FULL", count)
+            await notify_all("info:reading full .rm file")
             data = await asyncio.get_event_loop().run_in_executor(None, read_chunk_from_stdin(count))
+            await notify_all("info-done:reading full .rm file")
             print("READ", len(data))
             with open(file_rm, 'wb') as f:
                 f.write(data)
@@ -97,7 +99,9 @@ async def parse_input(ws_sv, file_rm, file_svg, file_pdf, convert_pdf_page_autor
                 g_page = page
                 o_png = file_pdf+'-'+page+'.png'
                 if not os.path.isfile(o_png):
+                    await notify_all("info:converting PDF page "+str(page))
                     run_cmd(convert_pdf_page_autorotate, file_pdf, page, o_png)
+                    await notify_all("info-done:converting PDF page "+str(page))
                 await notify_all("background:"+str(page))
         elif line == "NOPDF":
             g_pdf = False
@@ -107,7 +111,9 @@ async def parse_input(ws_sv, file_rm, file_svg, file_pdf, convert_pdf_page_autor
             count = int(count)
             print("READING PDF", count)
             g_pdf = True
+            await notify_all("info:reading full pdf")
             data = await asyncio.get_event_loop().run_in_executor(None, read_chunk_from_stdin(count))
+            await notify_all("info-done:reading full pdf")
             print("READ", len(data))
             prev_content = b''
             if os.path.isfile(file_pdf):
