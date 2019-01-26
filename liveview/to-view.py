@@ -65,7 +65,7 @@ def read_chunk_from_stdin(n):
         return res
     return sub
 
-async def parse_input(ws_sv, file_rm, file_svg, file_pdf):
+async def parse_input(ws_sv, file_rm, file_svg, file_pdf, convert_pdf_page_autorotate):
     global pdf
     while True:
 
@@ -88,12 +88,11 @@ async def parse_input(ws_sv, file_rm, file_svg, file_pdf):
             await asyncio.get_event_loop().run_in_executor(None, read_line) # read END
             await rebuild_svg(file_rm, file_svg)
         elif line == "PAGE":
+            # full path to the .rm file
             page = await asyncio.get_event_loop().run_in_executor(None, read_line)
             page = re.sub(r'.*/', '', page)[:-3]
             if pdf:
-                # TODO handle rotated pdf....
-                # 1872×1404 55px
-                run_cmd('./convert_pdf_page_autorotate.sh', file_pdf, page, file_svg+'.png')
+                run_cmd(convert_pdf_page_autorotate, file_pdf, page, file_pdf+'.png')
                 await notify_all("background")
         elif line == "NOPDF":
             pdf = False

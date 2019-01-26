@@ -36,9 +36,9 @@ function liveview() {
     o=TOTO
 
 
-    (cd "$W" && $browser "view.html#$o.svg" &)
+    (cd "$W" && $browser "view.html#$o" &)
 
-    run_and_copy_on_error "$p" | python3 $W/to-view.py "$W/$o.rm" "$W/$o.svg" "$W/$o.pdf"
+    run_and_copy_on_error "$p" | python3 $W/to-view.py "$W/$o.rm" "$W/$o.svg" "$W/$o.pdf" "$W/convert_pdf_page_autorotate.sh"
 }
 
 liveview "$@"

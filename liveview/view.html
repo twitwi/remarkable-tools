@@ -38,12 +38,12 @@
                 a0.className = '';
               };
 
-              a1.src = window.location.hash.substr(1)+'?'+Date.now();
+              a1.src = window.location.hash.substr(1)+'.svg?'+Date.now();
               a = [a1, a0];
             }
             refreshBackground = (clr) => {
               if (clr) bgim.src = ""
-              else bgim.src = window.location.hash.substr(1)+'.png?'+Date.now();
+              else bgim.src = window.location.hash.substr(1)+'.pdf.png?'+Date.now();
             }
 
             function toggleInterval() {
