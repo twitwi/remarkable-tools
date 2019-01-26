@@ -41,9 +41,9 @@
               a1.src = window.location.hash.substr(1)+'.svg?'+Date.now();
               a = [a1, a0];
             }
-            refreshBackground = (clr) => {
-              if (clr) bgim.src = ""
-              else bgim.src = window.location.hash.substr(1)+'.pdf.png?'+Date.now();
+            refreshBackground = (p) => {
+              if (p === "CLEAR") bgim.src = ""
+              else bgim.src = window.location.hash.substr(1)+'.pdf-'+p+'.png?'+Date.now();
             }
 
             function toggleInterval() {
@@ -69,6 +69,16 @@
               }
             }
 
+            REST = ""
+            function startsWith(all, beg) {
+              REST = ""
+              if (all.startsWith(beg)) {
+                REST = all.substr(beg.length)
+                return true
+              }
+              return false
+            }
+
             toggleInterval();
             toggleInterval();
             c1.checked = true ; applyRotate();
@@ -77,8 +87,8 @@
             ws.addEventListener('message', function({data, ...o}) {
               console.log("DATA", data)
               if (data == 'svg') refresh()
-              else if (data == 'background') refreshBackground()
-              else if (data == 'rmbackground') refreshBackground(true)
+              else if (startsWith(data, 'background:')) refreshBackground(REST)
+              else if (data == 'rmbackground') refreshBackground("CLEAR")
               else console.log(data)
             });
             refresh();

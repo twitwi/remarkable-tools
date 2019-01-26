@@ -92,8 +92,8 @@ async def parse_input(ws_sv, file_rm, file_svg, file_pdf, convert_pdf_page_autor
             page = await asyncio.get_event_loop().run_in_executor(None, read_line)
             page = re.sub(r'.*/', '', page)[:-3]
             if pdf:
-                run_cmd(convert_pdf_page_autorotate, file_pdf, page, file_pdf+'.png')
-                await notify_all("background")
+                run_cmd(convert_pdf_page_autorotate, file_pdf, page, file_pdf+'-'+page+'.png')
+                await notify_all("background:"+str(page))
         elif line == "NOPDF":
             pdf = False
             await notify_all("rmbackground")
