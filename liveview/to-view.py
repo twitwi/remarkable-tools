@@ -2,6 +2,7 @@
 import os
 import re
 import sys
+import glob
 import asyncio
 import websockets
 from rm2svg import main as rm2svg
@@ -45,12 +46,13 @@ async def rebuild_svg(file_rm, file_svg, notify=True):
     if notify:
         await notify_all("svg")
 
-pdf = False
+g_pdf = False
+g_page = 0
 async def log(websocket, path):
-    global pdf
+    global g_pdf
     print("START LOG", websocket)
-    if pdf:
-        await notify_all("background", all=[websocket])
+    if g_pdf:
+        await notify_all("background:"+str(g_page), all=[websocket])
     all.append(websocket)
     async for message in websocket:
         print("MESSAGE", message)
@@ -66,7 +68,7 @@ def read_chunk_from_stdin(n):
     return sub
 
 async def parse_input(ws_sv, file_rm, file_svg, file_pdf, convert_pdf_page_autorotate):
-    global pdf
+    global g_pdf
     while True:
 
         try:
@@ -91,21 +93,31 @@ async def parse_input(ws_sv, file_rm, file_svg, file_pdf, convert_pdf_page_autor
             # full path to the .rm file
             page = await asyncio.get_event_loop().run_in_executor(None, read_line)
             page = re.sub(r'.*/', '', page)[:-3]
-            if pdf:
-                run_cmd(convert_pdf_page_autorotate, file_pdf, page, file_pdf+'-'+page+'.png')
+            if g_pdf:
+                g_page = page
+                o_png = file_pdf+'-'+page+'.png'
+                if not os.path.isfile(o_png):
+                    run_cmd(convert_pdf_page_autorotate, file_pdf, page, o_png)
                 await notify_all("background:"+str(page))
         elif line == "NOPDF":
-            pdf = False
+            g_pdf = False
             await notify_all("rmbackground")
         elif line == "PDF":
             count = await asyncio.get_event_loop().run_in_executor(None, read_line)
             count = int(count)
             print("READING PDF", count)
-            pdf = True
+            g_pdf = True
             data = await asyncio.get_event_loop().run_in_executor(None, read_chunk_from_stdin(count))
             print("READ", len(data))
-            with open(file_pdf, 'wb') as f:
-                f.write(data)
+            prev_content = b''
+            if os.path.isfile(file_pdf):
+                with open(file_pdf, 'rb') as f:
+                    prev_content = f.read()
+            if data != prev_content:
+                with open(file_pdf, 'wb') as f:
+                    f.write(data)
+                for p in glob.glob(file_pdf+'-*.png'):
+                    os.remove(p)
             await asyncio.get_event_loop().run_in_executor(None, read_line) # read END
         elif line == "PATCH":
             print("LINE", line)
