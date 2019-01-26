@@ -27,6 +27,7 @@
         <div id="info"></div>
 
         <script>
+
             bg = document.querySelector('#bg')
             bgim = document.querySelector('#bgim')
             i = document.querySelector('#i')
@@ -66,6 +67,7 @@
             }
 
             applyRotate = () => {
+              localStorage.setItem('rotate', c1.checked)
               if (c1.checked) {
                  bg.style = 'transform: rotate(90deg) translateY(-100%); transform-origin: top left;';
                  i.style = 'transform: rotate(90deg) translateY(-100%); transform-origin: top left;';
@@ -88,7 +90,8 @@
             }
 
             // default rotated?
-            c1.checked = true ; applyRotate();
+            c1.checked = localStorage.getItem('rotate') == 'true'
+            applyRotate();
 
             var ws = new WebSocket("ws://localhost:4257");
             ws.addEventListener('message', function({data, ...o}) {
