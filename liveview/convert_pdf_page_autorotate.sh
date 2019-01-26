@@ -5,6 +5,11 @@ pdf="$1"
 page="$2"
 out="$3"
 
+which convert || {
+  cp "${out%/*}/convert-missing.png" "${out}"
+  exit
+}
+
 pagepath="$pdf[$2]"
 #echo $pagepath
 inf=$(identify "$pagepath")
@@ -41,6 +46,5 @@ go() {
   echo "$@"
   "$@"
 }
-#run_cmd('convert', '-density', '300', file_pdf+'['+page+']', '-resize', 'x1404', '-extent', 'x-55', file_svg+'.png')
-#print('convert', file_pdf+'['+page+']', file_svg+'.png')
+
 go convert -density 200 "$pagepath" $rotate $tr "$out"

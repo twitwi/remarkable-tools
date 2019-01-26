@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="702mm"
+   height="936mm"
+   viewBox="0 0 701.99998 935.99995"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="convert-missing.svg"
+   inkscape:export-filename="./convert-missing.png"
+   inkscape:export-xdpi="50.799999"
+   inkscape:export-ydpi="50.799999">
+  <defs
+     id="defs2">
+    <linearGradient
+       id="linearGradient852">
+      <stop
+         id="stop822"
+         offset="0"
+         stop-color="#214b9f" />
+      <stop
+         id="stop824"
+         offset="0.071429"
+         stop-color="#2151a2" />
+      <stop
+         id="stop826"
+         offset="0.142857"
+         stop-color="#266bae" />
+      <stop
+         id="stop828"
+         offset="0.214286"
+         stop-color="#368ec3" />
+      <stop
+         id="stop830"
+         offset="0.285714"
+         stop-color="#54bac8" />
+      <stop
+         id="stop832"
+         offset="0.357143"
+         stop-color="#7adabc" />
+      <stop
+         id="stop834"
+         offset="0.428571"
+         stop-color="#c4ea96" />
+      <stop
+         id="stop836"
+         offset="0.5"
+         stop-color="#efed7d" />
+      <stop
+         id="stop838"
+         offset="0.571429"
+         stop-color="#f7ea70" />
+      <stop
+         id="stop840"
+         offset="0.642857"
+         stop-color="#f7e262" />
+      <stop
+         id="stop842"
+         offset="0.714286"
+         stop-color="#f7c952" />
+      <stop
+         id="stop844"
+         offset="0.785714"
+         stop-color="#f89539" />
+      <stop
+         id="stop846"
+         offset="0.857143"
+         stop-color="#f86224" />
+      <stop
+         id="stop848"
+         offset="0.928571"
+         stop-color="#f73d14" />
+      <stop
+         id="stop850"
+         offset="1"
+         stop-color="#981f09" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#linearGradient852"
+       id="linearGradient1108"
+       x1="23.287148"
+       y1="216.97215"
+       x2="675.32581"
+       y2="216.97215"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(5.6935327,1.0278523)" />
+    <linearGradient
+       xlink:href="#linearGradient852"
+       id="linearGradient1108-3"
+       x1="23.287148"
+       y1="216.97215"
+       x2="675.32581"
+       y2="216.97215"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(5.6935327,1.0278523)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient852"
+       id="linearGradient933"
+       x1="11.000025"
+       y1="219.13078"
+       x2="711"
+       y2="219.13078"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient852"
+       id="linearGradient1029"
+       gradientUnits="userSpaceOnUse"
+       x1="11.000025"
+       y1="219.13078"
+       x2="711"
+       y2="219.13078" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497474"
+     inkscape:cx="-585.05357"
+     inkscape:cy="3629.0783"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1025"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     scale-x="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,639)">
+    <g
+       transform="matrix(0.68134672,0,0,0.68134672,17.487364,-816.65053)"
+       id="g923">
+      <text
+         id="text817"
+         y="281.50296"
+         x="63.122028"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           id="tspan819"
+           style="font-style:italic;fill:#0000ff;stroke-width:0.26458332"
+           y="281.50296"
+           x="63.122028"
+           sodipodi:role="line">convert is missing</tspan></text>
+      <g
+         transform="matrix(0.08269338,0,0,0.08269338,0.69451216,260.3917)"
+         id="g1519">
+        <title
+           id="title1521">Yikes!  --  by Arvin61r58</title>
+        <g
+           id="g1127"
+           transform="translate(-6.0000025,-1.1307767)">
+          <path
+             inkscape:connector-curvature="0"
+             id="path3855"
+             d="m 420.38457,83.071253 -34.9447,-67.02912 -68.15778,94.395577 -102.69279,-88.85176 -4.01417,100.76714 -130.606695,-17.009 59.684745,93.32344 -128.653155,3.6094 82.87927,78.19265 -79.78121,42.41383 103.736835,32.27794 -20.959775,76.96943 104.311855,-61.88671 24.01,43.62673 52.54831,-45.53803 42.0723,44.71986 38.26031,-62.28645 73.36646,50.49957 12.6966,-70.47495 119.1808,56.61346 -51.6431,-91.60035 64.6906,-10.86788 -25.2238,-51.19315 159.8545,-32.59597 -157.4357,-36.44458 73.7085,-65.667009 -124.427,36.484199 49.8792,-129.3887465 z"
+             style="fill:url(#linearGradient933);fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" />
+        </g>
+        <g
+           id="g1474"
+           transform="translate(-36.351091,-17.277899)">
+          <g
+             id="g1433">
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#e30000;fill-opacity:1;stroke:#b20000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 87.58069,162.3836 50.875,99.825 -7.15,-4.125 v 54.99999 h 33.825 l -2.475,-62.97498 44.55,-91.57502 -27.5,-1.09999 -38.5,76.45 3.025,-15.12501 -27.225,-59.67499 z"
+               id="path1192" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 210.23069,161.2836 -43.725,90.2 1.1,9.9 z"
+               id="path1190" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 121.68069,158.80859 23.10001,49.225 -15.67501,-49.5 z"
+               id="path1188" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 121.33069,254.5086 4.125,32.72501 0.55,-30.25002 z"
+               id="path1114" />
+          </g>
+          <g
+             id="g1427">
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#e30000;fill-opacity:1;stroke:#b20000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 222.93226,159.0836 4.95,80.30001 -4.67502,74.52498 37.40001,-6.32499 -7.97499,-79.2 3.02499,-67.37501 z"
+               id="path1184" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 260.95725,161.5586 -1.65,62.97501 7.70001,-62.70002 z"
+               id="path1182" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 222.58226,242.1336 -7.70001,66.55001 3.57501,2.475 z"
+               id="path1180" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 235.30726,317.63361 26.94999,0.27499 -1.37499,-3.57499 z"
+               id="path1116" />
+          </g>
+          <g
+             id="g1421">
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#e30000;fill-opacity:1;stroke:#b20000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 279.64241,156.88359 4.4,85.25 -1.925,73.425 29.975,-2.475 -3.575,-26.94999 22.55,-34.37499 v 10.44999 l 30.79999,50.87499 29.97501,-3.57498 -45.925,-79.75002 45.375,-69.84999 -31.90001,-0.825 -55.275,82.22499 3.3,-23.375 2.475,-61.32499 z"
+               id="path1176" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 395.76741,162.3836 -43.175,67.375 3.84999,5.50001 z"
+               id="path1174" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 315.0174,156.88359 -2.475,59.12501 9.62501,-59.12501 z"
+               id="path1172" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 276.44241,315.28361 3.3,-71.50002 -7.7,71.50002 z"
+               id="path1170" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 329.5174,275.95859 23.925,33 -23.37499,-41.25 z"
+               id="path1168" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 314.3674,286.68359 3.3,24.75 4.125,-4.39998 z"
+               id="path1118" />
+          </g>
+          <g
+             id="g1413">
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#e30000;fill-opacity:1;stroke:#b20000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 416.6311,157.4336 4.39999,80.85 -4.125,77.82501 44.00001,-4.67502 44.825,1.65 -1.37499,-25.84998 -39.60002,1.37499 -26.4,-1.10001 7.97501,-5.49999 -1.925,-37.67499 40.97501,2.475 -6.05001,-28.05002 -38.50001,1.1 4.125,-38.49999 4.40001,5.49999 56.375,-0.825 -3.575,-28.05 z"
+               id="path1164" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 414.6311,238.83359 -5.225,6.87501 1.925,66.54999 z"
+               id="path1162" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 450.3561,279.80861 6.05,-4.40001 -6.05,-26.12499 z"
+               id="path1160" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 451.8311,190.88359 3.575,4.125 40.425,-4.125 z"
+               id="path1158" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 484.1811,218.75859 4.67501,18.97502 0.54999,-18.70001 z"
+               id="path1120" />
+          </g>
+          <g
+             id="g1406">
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#e30000;fill-opacity:1;stroke:#b20000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 618.01274,170.90859 -33.55001,-17.325 -40.425,7.97501 -18.975,38.22499 13.2,34.1 40.70001,12.375 18.975,24.47502 -11.55,18.975 -26.4,-2.475 -26.4,-8.52501 -8.52501,26.95 39.05001,9.89999 41.25,-6.6 18.975,-25.29999 -3.025,-33 -24.47501,-21.45 -39.32499,-24.47501 -1.92501,-16.77499 14.025,-6.05 30.80001,6.6 12.375,12.375 z"
+               id="path1154" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 541.28774,239.83359 40.69999,17.87502 -4.95,-7.425 z"
+               id="path1152" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 521.31274,195.3836 17.59999,-31.62501 -6.6,1.92501 z"
+               id="path1150" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 534.68774,275.2336 24.475,6.32499 -21.45,-12.09999 z"
+               id="path1148" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 621.76273,173.65859 -5.49999,30.525 4.4,4.125 z"
+               id="path1146" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 611.58774,309.95859 15.4,-14.85 -1.10001,-6.32499 z"
+               id="path1144" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 562.36273,204.08359 3.85001,-16.225 -6.05,1.92501 z"
+               id="path1122" />
+          </g>
+          <g
+             transform="translate(-62,26)"
+             id="g1305">
+            <g
+               id="g1296"
+               style="stroke:#b20000;stroke-opacity:1">
+              <path
+                 inkscape:connector-curvature="0"
+                 id="path1240"
+                 d="m 712.82844,124.20905 -1.82846,76.93786 12.06785,53.82483 17.9189,3.16617 9.50802,-67.43935 -8.41094,-70.28891 z"
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#e30000;fill-opacity:1;stroke:#b20000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
+              <path
+                 inkscape:connector-curvature="0"
+                 id="path1238"
+                 d="m 725.62766,268.58626 -14.99338,16.14745 3.29123,17.73053 22.30724,8.23204 13.16492,-14.88099 -1.82848,-16.14745 -10.60507,-9.18188 z"
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#e30000;fill-opacity:1;stroke:#b20000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
+            </g>
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 707.53721,206.24444 1.53591,29.92027 8.06352,15.95748 z"
+               id="path1236" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 748.39767,123.57582 4.22374,46.54264 -0.38398,-37.56655 z"
+               id="path1234" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 711.92551,307.99452 4.99171,4.65427 11.90326,0.99734 z"
+               id="path1232" />
+            <path
+               inkscape:connector-curvature="0"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               d="m 743.18089,269.53611 7.29557,6.64895 -1.91988,-5.98405 z"
+               id="path1226" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g1027"
+       transform="matrix(0,-0.68134672,0.68134672,0,-175.81463,277.11044)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="63.122028"
+         y="281.50296"
+         id="text937"><tspan
+           sodipodi:role="line"
+           x="63.122028"
+           y="281.50296"
+           style="font-style:italic;fill:#0000ff;stroke-width:0.26458332"
+           id="tspan935">convert is missing</tspan></text>
+      <g
+         id="g1025"
+         transform="matrix(0.08269338,0,0,0.08269338,0.69451216,260.3917)">
+        <title
+           id="title939">Yikes!  --  by Arvin61r58</title>
+        <g
+           transform="translate(-6.0000025,-1.1307767)"
+           id="g943">
+          <path
+             style="fill:url(#linearGradient1029);fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+             d="m 420.38457,83.071253 -34.9447,-67.02912 -68.15778,94.395577 -102.69279,-88.85176 -4.01417,100.76714 -130.606695,-17.009 59.684745,93.32344 -128.653155,3.6094 82.87927,78.19265 -79.78121,42.41383 103.736835,32.27794 -20.959775,76.96943 104.311855,-61.88671 24.01,43.62673 52.54831,-45.53803 42.0723,44.71986 38.26031,-62.28645 73.36646,50.49957 12.6966,-70.47495 119.1808,56.61346 -51.6431,-91.60035 64.6906,-10.86788 -25.2238,-51.19315 159.8545,-32.59597 -157.4357,-36.44458 73.7085,-65.667009 -124.427,36.484199 49.8792,-129.3887465 z"
+             id="path941"
+             inkscape:connector-curvature="0" />
+        </g>
+        <g
+           transform="translate(-36.351091,-17.277899)"
+           id="g1023">
+          <g
+             id="g953">
+            <path
+               id="path945"
+               d="m 87.58069,162.3836 50.875,99.825 -7.15,-4.125 v 54.99999 h 33.825 l -2.475,-62.97498 44.55,-91.57502 -27.5,-1.09999 -38.5,76.45 3.025,-15.12501 -27.225,-59.67499 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#e30000;fill-opacity:1;stroke:#b20000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path947"
+               d="m 210.23069,161.2836 -43.725,90.2 1.1,9.9 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path949"
+               d="m 121.68069,158.80859 23.10001,49.225 -15.67501,-49.5 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path951"
+               d="m 121.33069,254.5086 4.125,32.72501 0.55,-30.25002 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+          </g>
+          <g
+             id="g963">
+            <path
+               id="path955"
+               d="m 222.93226,159.0836 4.95,80.30001 -4.67502,74.52498 37.40001,-6.32499 -7.97499,-79.2 3.02499,-67.37501 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#e30000;fill-opacity:1;stroke:#b20000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path957"
+               d="m 260.95725,161.5586 -1.65,62.97501 7.70001,-62.70002 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path959"
+               d="m 222.58226,242.1336 -7.70001,66.55001 3.57501,2.475 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path961"
+               d="m 235.30726,317.63361 26.94999,0.27499 -1.37499,-3.57499 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+          </g>
+          <g
+             id="g977">
+            <path
+               id="path965"
+               d="m 279.64241,156.88359 4.4,85.25 -1.925,73.425 29.975,-2.475 -3.575,-26.94999 22.55,-34.37499 v 10.44999 l 30.79999,50.87499 29.97501,-3.57498 -45.925,-79.75002 45.375,-69.84999 -31.90001,-0.825 -55.275,82.22499 3.3,-23.375 2.475,-61.32499 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#e30000;fill-opacity:1;stroke:#b20000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path967"
+               d="m 395.76741,162.3836 -43.175,67.375 3.84999,5.50001 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path969"
+               d="m 315.0174,156.88359 -2.475,59.12501 9.62501,-59.12501 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path971"
+               d="m 276.44241,315.28361 3.3,-71.50002 -7.7,71.50002 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path973"
+               d="m 329.5174,275.95859 23.925,33 -23.37499,-41.25 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path975"
+               d="m 314.3674,286.68359 3.3,24.75 4.125,-4.39998 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+          </g>
+          <g
+             id="g989">
+            <path
+               id="path979"
+               d="m 416.6311,157.4336 4.39999,80.85 -4.125,77.82501 44.00001,-4.67502 44.825,1.65 -1.37499,-25.84998 -39.60002,1.37499 -26.4,-1.10001 7.97501,-5.49999 -1.925,-37.67499 40.97501,2.475 -6.05001,-28.05002 -38.50001,1.1 4.125,-38.49999 4.40001,5.49999 56.375,-0.825 -3.575,-28.05 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#e30000;fill-opacity:1;stroke:#b20000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path981"
+               d="m 414.6311,238.83359 -5.225,6.87501 1.925,66.54999 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path983"
+               d="m 450.3561,279.80861 6.05,-4.40001 -6.05,-26.12499 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path985"
+               d="m 451.8311,190.88359 3.575,4.125 40.425,-4.125 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path987"
+               d="m 484.1811,218.75859 4.67501,18.97502 0.54999,-18.70001 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+          </g>
+          <g
+             id="g1005">
+            <path
+               id="path991"
+               d="m 618.01274,170.90859 -33.55001,-17.325 -40.425,7.97501 -18.975,38.22499 13.2,34.1 40.70001,12.375 18.975,24.47502 -11.55,18.975 -26.4,-2.475 -26.4,-8.52501 -8.52501,26.95 39.05001,9.89999 41.25,-6.6 18.975,-25.29999 -3.025,-33 -24.47501,-21.45 -39.32499,-24.47501 -1.92501,-16.77499 14.025,-6.05 30.80001,6.6 12.375,12.375 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#e30000;fill-opacity:1;stroke:#b20000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path993"
+               d="m 541.28774,239.83359 40.69999,17.87502 -4.95,-7.425 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path995"
+               d="m 521.31274,195.3836 17.59999,-31.62501 -6.6,1.92501 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path997"
+               d="m 534.68774,275.2336 24.475,6.32499 -21.45,-12.09999 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path999"
+               d="m 621.76273,173.65859 -5.49999,30.525 4.4,4.125 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path1001"
+               d="m 611.58774,309.95859 15.4,-14.85 -1.10001,-6.32499 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path1003"
+               d="m 562.36273,204.08359 3.85001,-16.225 -6.05,1.92501 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+          </g>
+          <g
+             id="g1021"
+             transform="translate(-62,26)">
+            <g
+               style="stroke:#b20000;stroke-opacity:1"
+               id="g1011">
+              <path
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#e30000;fill-opacity:1;stroke:#b20000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+                 d="m 712.82844,124.20905 -1.82846,76.93786 12.06785,53.82483 17.9189,3.16617 9.50802,-67.43935 -8.41094,-70.28891 z"
+                 id="path1007"
+                 inkscape:connector-curvature="0" />
+              <path
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#e30000;fill-opacity:1;stroke:#b20000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+                 d="m 725.62766,268.58626 -14.99338,16.14745 3.29123,17.73053 22.30724,8.23204 13.16492,-14.88099 -1.82848,-16.14745 -10.60507,-9.18188 z"
+                 id="path1009"
+                 inkscape:connector-curvature="0" />
+            </g>
+            <path
+               id="path1013"
+               d="m 707.53721,206.24444 1.53591,29.92027 8.06352,15.95748 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path1015"
+               d="m 748.39767,123.57582 4.22374,46.54264 -0.38398,-37.56655 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path1017"
+               d="m 711.92551,307.99452 4.99171,4.65427 11.90326,0.99734 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+            <path
+               id="path1019"
+               d="m 743.18089,269.53611 7.29557,6.64895 -1.91988,-5.98405 z"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1;font-family:'Blue Highway Linocut';-inkscape-font-specification:'Blue Highway Linocut';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#b20000;fill-opacity:1;stroke:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+               inkscape:connector-curvature="0" />
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

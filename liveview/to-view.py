@@ -98,6 +98,11 @@ async def parse_input(ws_sv, file_rm, file_svg, file_pdf, convert_pdf_page_autor
             if g_pdf:
                 g_page = page
                 o_png = file_pdf+'-'+page+'.png'
+                # special case to delete "convert-missing.png" copies"
+                convert_missing = re.sub(r'/[^/]*$', '/convert-missing.png', o_png)
+                if os.path.isfile(o_png) and os.path.getsize(o_png) == os.path.getsize(convert_missing):
+                    print("Removing", o_png)
+                    os.remove(o_png)
                 if not os.path.isfile(o_png):
                     await notify_all("info:converting PDF page "+str(page))
                     run_cmd(convert_pdf_page_autorotate, file_pdf, page, o_png)
