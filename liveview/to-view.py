@@ -127,6 +127,10 @@ async def parse_input(ws_sv, file_rm, file_svg, file_pdf, convert_pdf_page_autor
         elif line == "NOPDF":
             g_pdf = False
             await notify_all("rmbackground")
+        elif line == "NOANNOTATIONS":
+            with open(file_svg, 'w') as f:
+                f.write("<svg xmlns='http://www.w3.org/2000/svg' height='1872' width='1404'></svg>\n")
+            await notify_all("svg")
         elif line == "PDF":
             count = await asyncio.get_event_loop().run_in_executor(None, read_line)
             count = int(count)

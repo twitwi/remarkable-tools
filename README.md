@@ -37,6 +37,7 @@ It will:
 - connect to the "remarkable" host via SSH using your keys,
 - and, locally start a firefox to view the live document
 
+You will need to restart the tablet once for the current page to be refreshed as soon as you change page on the tablet (without the restart, it changes only when you edit it).
 
 
 # Attribution

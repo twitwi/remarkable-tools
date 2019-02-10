@@ -19,12 +19,21 @@ log() {
 }
 
 log $@
+
 ps | \grep 'on\-remarkable' | awk '{ print $1 }' | \grep -v "^$$\$" | awk '{print $1}' | xargs kill
 
 last=$(mktemp)
 now=$(mktemp)
 err=$(mktemp)
 lastsize=0
+livep=-1
+
+cleanup() {
+  # force self destruction
+  ps | \grep 'on\-remarkable' | awk '{ print $1 }' | xargs kill
+}
+trap cleanup EXIT
+
 
 log $last
 
@@ -73,6 +82,23 @@ sendauto() { # "$diff" "$err_f" "$last_f" "$now_f" "$lastsize" "$size"
     sendpatch "$@"
   fi
 }
+sendnoannotations() {
+  echo NOANNOTATIONS
+}
+
+watchjournalctl() {
+  journalctl -f \
+  | awk '/ Page changed to / { print(gensub(/^.* Page changed to ([0-9]+) .*$/, "\\1", "g"))}
+         / loading path: ".home./ { print(gensub(/^.*([.]local\/share\/remarkable\/xochitl\/[^.\/]+).*$/, "\\1", "g")) }  '  \
+  | while read p ; do
+    case "$p" in
+      .local/*) echo $p > /tmp/liveview-uuid ;;
+      *)        echo $p > /tmp/liveview-page ;;
+    esac
+  done
+}
+rm -f /tmp/liveview-uuid
+rm -f /tmp/liveview-page
 
 #if test "$1" = "//" ; then
 #  p=$(getRemarkablePathOfLastEditedPage)
@@ -91,6 +117,21 @@ if test \! "$sha" = "$2" ; then
   # trigger re-scp
 fi
 
+if test -f ~/.config/QtProject/qtlogging.ini ; then
+  if grep -q 'xochitl.documentworker.debug=true' ~/.config/QtProject/qtlogging.ini ; then
+    echo "##### already set for logging page change"
+  else
+    echo "##### log config present but no page change logging"
+  fi
+else
+  echo "##### SETTING DEBUG LOGS TO DETECT PAGE CHANGE"
+  mkdir -p .config/QtProject
+  printf "[Rules]\nxochitl.documentworker.debug=true\n" >> ~/.config/QtProject/qtlogging.ini
+fi
+    
+
+watchjournalctl &
+
 log $1
 log $p
 #sendfull "$p"
@@ -98,7 +139,17 @@ log $p
 while true ; do
     if test "$1" = "//" ; then
       newp=$(getRemarkablePathOfLastEditedPage)
+      if test -f /tmp/liveview-page ; then
+        pnum=$(cat /tmp/liveview-page)
+        if test -f /tmp/liveview-uuid ; then
+          uuidpath="$(cat /tmp/liveview-uuid)"
+        else
+          uuidpath="$(dirname "$newp")"
+        fi
+        newp="$uuidpath/$pnum.rm"
+      fi
       if test "$newp" \!= "$p" ; then
+        sendnoannotations
         p="$newp"
         lastsize=0
         f=$(dirname "$p")
@@ -106,14 +157,18 @@ while true ; do
         if test \! -f "$f.pdf" ; then
           sendnopdf
           lastf=""
+          livep=-1
         elif test "$f" \!= "$lastf"; then
           sendpdf "$f.pdf"
           lastf="$f"
+          livep=-1
         fi
         sendpageinfo "$p"
       fi
     fi
-    if test \! "$p" -ot "$last" -o "$lastsize" = 0 ; then
+    if test \! -f "$p" ; then
+      true
+    elif test \! "$p" -ot "$last" -o "$lastsize" = 0 ; then
         size=$(wc -c < "$p")
         if test "$size" -ne "$lastsize" ; then
           cp "$p" "$now"
