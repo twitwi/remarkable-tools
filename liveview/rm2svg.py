@@ -49,7 +49,8 @@ stroke_colour={
 }'''
 
 
-def main(args=sys.argv):
+def main(args=None):
+    if args is None: args = sys.argv[1:]
     parser = argparse.ArgumentParser(prog=__prog_name__)
     parser.add_argument('--height',
                         help='Desired height of image',
