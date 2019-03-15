@@ -36,7 +36,8 @@ function LOG() {
 }
 function update_metadata_cache() {
     if [ "$#" -gt 0   -o   \! -f "$metadatacache" ] ; then
-        ssh remarkable 'for i in .local/share/remarkable/xochitl/*.metadata ; do echo FILE: $i ; cat $i ; done' | tr -d '"' | sed -e 's@.local/.*/@@g' -e 's@\([.]metadata\|,\)$@@g' > "$metadatacache"
+        ssh remarkable 'for i in .local/share/remarkable/xochitl/*.metadata ; do echo FILE: $i ; cat $i ; done' | tr -d '"' | sed -e 's@.local/.*/@@g' -e 's@\([.]metadata\|,\)$@@g' > "$metadatacache.tmp"
+        cp -f "$metadatacache.tmp" "$metadatacache"
         awk 'BEGIN {n[""] = ""} $1~/FILE:/ {f=$2; if (FNR!=NR) { na=n[f];pa=p[f]; while (pa != "") {na=n[pa]"/"na; pa=p[pa]}; print f" /"na }; next}   FNR!=NR {next} i=index($0, "parent: ") {p[f]=substr($0, i+length("parent: ")); next} i=index($0, "visibleName: ") {n[f]=substr($0, i+length("visibleName: ")); next}' "$metadatacache" "$metadatacache" > "$metadatacache.u2n"
         awk '{for(i=2;i<=NF;i++) {printf("%s ", $i)} ; print("---///--- " $1) }' "$metadatacache.u2n" | sort > "$metadatacache.n2u"
     fi
@@ -116,13 +117,13 @@ elif [ "$cloud" '!=' "true" ] ; then
     fi
     echo "Getting from the tablet (based on path=$remotepath), using ssh:"
     update_metadata_cache
-    echo "Looking for UUID"
-    if ! grep -q "^$remotepath ---///---" "$metadatacache.n2u" ; then
-        echo "... not found, refreshing cache"
-        update_metadata_cache true
-    fi
+    echo "Looking for UUID in the local metadata cache"
     if ! grep -q "^$remotepath ---///---" "$metadatacache.n2u" ; then
         echo "Name not found... exiting"
+        echo ""
+        echo "NB: if you renamed or created files on the tablet (the metadata cache is outdated)"
+        echo "    then you might want to update the metadata with:"
+        echo "$D0 update-metadata"
         exit 1
     fi
     UUID=$(grep "^$remotepath ---///---" "$metadatacache.n2u" | sed 's@.* ---///--- @@g')
