@@ -7,7 +7,6 @@ PDFTK=$(which pdftk || echo "java -jar $W/deps/pdftk-all.jar")
 RMAPI=$(which rmapi || echo "$HOME/go/bin/rmapi")
 RM2SVG="python3 $W/../liveview/rm2svg.py"
 
-
 # Dependencies
 # * rsvg-convert
 # * ps2pdf
@@ -28,6 +27,7 @@ function die_with_usage() {
   echo "Usage: $D0 <path/to/cloud/PDF> cloud=true"
   echo "Usage: $D0 <UUID>"
   echo "Usage: $D0 update-metadata"
+  echo "Usage: source <($D0 def-geta)"
   exit 1
 }
 function LOG() {
@@ -41,6 +41,22 @@ function update_metadata_cache() {
         awk '{for(i=2;i<=NF;i++) {printf("%s ", $i)} ; print("---///--- " $1) }' "$metadatacache.u2n" | sort > "$metadatacache.n2u"
     fi
 }
+function print_autocomplete() {
+    cat <<EOF
+# to be eval'd (or sourced)
+geta() {
+  "$1" "\$@" D0=geta
+}
+_geta() {
+  local cur=\${COMP_WORDS[COMP_CWORD]}
+  local patterns
+  mapfile -t patterns < <( sed -e  's@ ---///--- .*\$@@g' "$2" ; echo update-metadata )
+  mapfile -t COMPREPLY < <( compgen -W "\$( printf '%q ' "\${patterns[@]}" )" -- "\$cur" | sed 's@ @\\\\ @g' )
+}
+complete -F _geta geta
+EOF
+}
+
 
 # Check arguments
 
@@ -63,8 +79,17 @@ for i in "$@" ; do
     fi
 done
 
+if [ "$remotepath" = "D0=geta" ] ; then
+    D0=geta
+    die_with_usage
+fi
+
 if [ "$remotepath" = "update-metadata" ] ; then
     update_metadata_cache 1
+    exit 0
+fi
+if [ "$remotepath" = "def-geta" ] ; then
+    print_autocomplete "$(readlink -f "${BASH_SOURCE[0]}")" "$metadatacache.n2u"
     exit 0
 fi
 
