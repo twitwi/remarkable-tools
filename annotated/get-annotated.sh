@@ -8,7 +8,7 @@ RMAPI=$(which rmapi || echo "$HOME/go/bin/rmapi")
 RM2SVG="python3 $W/../liveview/rm2svg.py"
 
 # Dependencies
-# * rsvg-convert
+# * rsvg-convert   (apt install librsvg2-bin)
 # * ps2pdf
 # * pdfinfo
 # * pdfjam
@@ -50,7 +50,7 @@ geta() {
 _geta() {
   local cur=\${COMP_WORDS[COMP_CWORD]}
   local patterns
-  mapfile -t patterns < <( sed -e  's@ ---///--- .*\$@@g' "$2" ; echo update-metadata )
+  mapfile -t patterns < <( (test -f "$2" && sed -e  's@ ---///--- .*\$@@g' "$2") ; echo update-metadata )
   mapfile -t COMPREPLY < <( compgen -W "\$( printf '%q ' "\${patterns[@]}" )" -- "\$cur" | sed 's@ @\\\\ @g' )
 }
 complete -F _geta geta
