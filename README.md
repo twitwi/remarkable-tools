@@ -3,7 +3,7 @@ Custom tools for the remarkable tablet.
 
 The following tools are proposed:
 - a way to have a liveview of a page without using the cloud, by directly connecting to the tablet via SSH,
-- later? a way to get an annotated PDF from the remarkable, without the cloud (and/or with it, see "[rmapi]" to access the cloud).
+- a way to get an annotated PDF from the remarkable, without the cloud (and/or with it, see "[rmapi]" to access the cloud).
 
 # Live view
 
@@ -56,7 +56,7 @@ These tools are partly built from the rm2svg tool:
 - and made compatible with version 1.6 of the tablet here https://github.com/reHackable/maxio/issues/27
 
 The pdf export script is inspired by https://github.com/jmptable/rm-dl-annotated
-and uses https://github.com/juruen/rmapi (which needs to be installed and might even deprecate the current pdf export).
+and, for the cloud access, uses https://github.com/juruen/rmapi (which needs to be installed and might even deprecate the current pdf export).
 
 
 [setup SSH keys]: https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2

@@ -2,13 +2,11 @@
 
 W=$(dirname $(readlink -f "${BASH_SOURCE[0]}"))
 
+D0="$0"
 PDFTK=$(which pdftk || echo "java -jar $W/deps/pdftk-all.jar")
 RMAPI=$(which rmapi || echo "$HOME/go/bin/rmapi")
 RM2SVG="python3 $W/../liveview/rm2svg.py"
 
-direct_download () {
-    false
-}
 
 # Dependencies
 # * rsvg-convert
@@ -26,17 +24,27 @@ set -o errexit
 
 
 function die_with_usage() {
-  echo "Usage: rm-dl-annotated path/to/cloud/PDF"
+  echo "Usage: $D0 <path/to/cloud/PDF>"
+  echo "Usage: $D0 <path/to/cloud/PDF> cloud=true"
+  echo "Usage: $D0 <UUID>"
+  echo "Usage: $D0 update-metadata"
   exit 1
 }
 function LOG() {
     "$@" 2>&1 | sed 's@^@>>> @g'
     return ${PIPESTATUS[0]}
 }
+function update_metadata_cache() {
+    if [ "$#" -gt 0   -o   \! -f "$metadatacache" ] ; then
+        ssh remarkable 'for i in .local/share/remarkable/xochitl/*.metadata ; do echo FILE: $i ; cat $i ; done' | tr -d '"' | sed -e 's@.local/.*/@@g' -e 's@\([.]metadata\|,\)$@@g' > "$metadatacache"
+        awk 'BEGIN {n[""] = ""} $1~/FILE:/ {f=$2; if (FNR!=NR) { na=n[f];pa=p[f]; while (pa != "") {na=n[pa]"/"na; pa=p[pa]}; print f" /"na }; next}   FNR!=NR {next} i=index($0, "parent: ") {p[f]=substr($0, i+length("parent: ")); next} i=index($0, "visibleName: ") {n[f]=substr($0, i+length("visibleName: ")); next}' "$metadatacache" "$metadatacache" > "$metadatacache.u2n"
+        awk '{for(i=2;i<=NF;i++) {printf("%s ", $i)} ; print("---///--- " $1) }' "$metadatacache.u2n" | sort > "$metadatacache.n2u"
+    fi
+}
 
 # Check arguments
 
-if [ "$#" -ne 1 ]; then
+if [ "$#" -lt 1 ]; then
   die_with_usage
 fi
 
@@ -44,6 +52,8 @@ fi
 workdir=$(mktemp -d)
 remotepath="$1"
 name=$(basename "$remotepath")
+metadatacache="$W/metadata.cache"
+cloud=false
 shift
 
 # Lazy generic parameter reading
@@ -53,34 +63,73 @@ for i in "$@" ; do
     fi
 done
 
-pushd "$workdir"
+if [ "$remotepath" = "update-metadata" ] ; then
+    update_metadata_cache 1
+    exit 0
+fi
+
+echo "$workdir"
+pushd "$workdir" > /dev/null
 
 # Download the given document using the ReMarkable Tablet or Cloud API
-if direct_download ; then
-    echo "TODO"
+xd() { echo '[[:xdigit:]]\{'$1'\}' ; }
+pat=$(xd 8)-$(xd 4)-$(xd 4)-$(xd 4)-$(xd 12)
+
+if echo "$remotepath" | grep -q $pat ; then
+    UUID=$(echo "$remotepath" | sed 's@.*\('$pat'\).*@\1@g')
+    name="$UUID"
+    echo "Getting from the tablet (based on UUID=$UUID), using ssh:"
+    scp -q -r remarkable:.local/share/remarkable/xochitl/"$UUID"'*' .
+    LOG ls
+    if [ \! -f "$UUID.pdf" ] ; then
+        NOPDF=true
+        echo "Not using pdf (none found)"
+    fi
+elif [ "$cloud" '!=' "true" ] ; then
+    if echo "$remotepath" | grep -q '^[^/]' ; then
+        remotepath="/$remotepath"
+    fi
+    echo "Getting from the tablet (based on path=$remotepath), using ssh:"
+    update_metadata_cache
+    echo "Looking for UUID"
+    if ! grep -q "^$remotepath ---///---" "$metadatacache.n2u" ; then
+        echo "... not found, refreshing cache"
+        update_metadata_cache true
+    fi
+    if ! grep -q "^$remotepath ---///---" "$metadatacache.n2u" ; then
+        echo "Name not found... exiting"
+        exit 1
+    fi
+    UUID=$(grep "^$remotepath ---///---" "$metadatacache.n2u" | sed 's@.* ---///--- @@g')
+    echo "Now retrieving UUID=$UUID, using ssh:"
+    scp -q -r remarkable:.local/share/remarkable/xochitl/"$UUID"'*' .
+    LOG ls
+    if [ \! -f "$UUID.pdf" ] ; then
+        NOPDF=true
+        echo "Not using pdf (none found)"
+    fi
 else
+    echo "Getting from the cloud, using rmapi"
     LOG $RMAPI get "$remotepath"
     unzip "$name.zip" >/dev/null
 
-    UUID=$(basename "$(LOG ls ./*-*-*.pdf)" .pdf)
+    UUID=$(basename "$(ls ./*-*-*.pdf)" .pdf)
 
     if [ "$UUID" = "" ] ; then
         NOPDF=true
         UUID=$(basename "$(ls ./*-*-*.pagedata)" .pagedata)
         echo "Not using pdf then"
     fi
-
-    if LOG ls "./$UUID/"*.rm ; then
-        echo "Found annotations"
-    else
-        echo "PDF is not annotated. Exiting."
-        #rm -r "$WORK_DIR"
-        exit 0
-    fi
 fi
 
+if LOG ls "./$UUID/"*.rm ; then
+    echo "Found annotations"
+else
+    echo "PDF is not annotated. Exiting."
+    #rm -r "$WORK_DIR"
+    exit 0
+fi
 
-# DELETED things about transform and crop...
 
 # Generating the annotation pdf
 if [ "$NOPDF" = true ] ; then
