@@ -184,8 +184,13 @@ echo "" | ps2pdf -sPAPERSIZE=a5 - empty.pdf
 
 for (( i=0 ; i<$npages ; i++ )) ; do 
 
-  if LOG ls -l1 "./$UUID/$i.rm" ; then
-      $RM2SVG -c -i ./$UUID/$i.rm -o $i.svg
+    pname=$(cat $UUID.content | awk -v P=$i '/"pages"/ {go=1; p=0; next} go && p==P {print; exit} go {p=p+1}' | sed -e 's@^[^"]*"@@g' -e 's@"[^$]*$@@g')
+    if [ ! -f "./$UUID/$pname.rm" ] ; then
+        pname=$i
+    fi
+    
+  if LOG ls -l1 "./$UUID/$pname.rm" ; then
+      $RM2SVG -c -i ./$UUID/$pname.rm -o $i.svg
       rsvg-convert -f pdf -o "$i.pdf" "$i.svg"
       if grep -q '<polyline' "$i.svg" ; then
           # remember only if there are some paths generated
