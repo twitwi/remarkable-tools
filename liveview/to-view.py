@@ -102,6 +102,10 @@ async def parse_input(ws_sv, file_rm, file_svg, file_pdf, convert_pdf_page_autor
             print("ERR", line)
             continue
 
+        if line is None: # EOF
+            print("ERR: remote bash closed")
+            exit()
+
         print("LINE:", line, len(all))
 
         if line == "FULL":

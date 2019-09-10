@@ -146,7 +146,9 @@ while true ; do
         else
           uuidpath="$(dirname "$newp")"
         fi
-        newp="$uuidpath/$pnum.rm"
+        pname=$(cat $uuidpath.content | awk -v P=$pnum '/"pages"/ {go=1; p=0; next} go && p==P {print; exit} go {p=p+1}' | sed -e 's@^[^"]*"@@g' -e 's@"[^$]*$@@g')
+        newp="$uuidpath/$pname.rm"
+        log NEWP:$newp
       fi
       if test "$newp" \!= "$p" ; then
         sendnoannotations

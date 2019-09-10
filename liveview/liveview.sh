@@ -10,7 +10,7 @@ browser=firefox
 function run_and_copy_on_error() {
   local sha=$(cat $W/on-remarkable-watch.sh | sha1sum)
   {
-    ssh -C remarkable bash ./on-remarkable-watch.sh "$1" "$sha" \
+    [ ssh -C remarkable bash ./on-remarkable-watch.sh "$1" "$sha" != 123 ] \
     || \
     {
       echo "Copying on-remarkable-watch.sh" 1>&2
