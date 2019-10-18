@@ -1,35 +1,22 @@
 #!/usr/bin/env python3
 #
 # Script for converting reMarkable tablet ".rm" files to SVG image.
-# Based on rM2svg from
+# this works for the new *.rm format, where each page is a separate file
+# credits to
+# https://github.com/lschwetlick/maxio/tree/master/tools
+# which in turn credits
+# https://github.com/jmiserez/maxio/blob/ee15bcc86e4426acd5fc70e717468862dce29fb8/tmp-rm16-ericsfraga-rm2svg.py
 #
-#    https://github.com/lschwetlick/maxio/tree/master/tools
-#
-# Format appears to be as follows:
-#
-#  header: 'reMarkable .lines file, version=3          '
-#  4 bytes integer: number of layers
-#  for each layer:
-#      4 bytes integer: number of strokes
-#      for each stroke:
-#          4 bytes integer: pen
-#          4 bytes integer: colour
-#          4 bytes: unknown
-#          4 bytes floating point: width
-#          4 bytes integer: number of segments
-#          for each segment:
-#              6 floating point numbers: x, y, pressure, title, unknown, unknown
-#
-#
-# Eric S Fraga
+
 import sys
 import struct
 import os.path
 import argparse
+import re
 
 
 __prog_name__ = "rm2svg"
-__version__ = "0.0.2"
+__version__ = "0.0.2.1"
 
 
 # Size
@@ -37,7 +24,7 @@ default_x_width = 1404
 default_y_width = 1872
 
 # Mappings
-stroke_colour={
+stroke_colour = {
     0 : "black",
     1 : "grey",
     2 : "white",
@@ -86,18 +73,19 @@ def main(args=None):
 
     if not os.path.exists(args.input):
         parser.error('The file "{}" does not exist!'.format(args.input))
-
     if args.coloured_annotations:
-        global stroke_colour
-        stroke_colour = {
-            0: "blue",
-            1: "red",
-            2: "lightgrey",
-            3: "yellow"
-        }
-
+        set_coloured_annots()
     rm2svg(args.input, args.output, args.coloured_annotations,
            args.width, args.height)
+
+def set_coloured_annots():
+    global stroke_colour
+    stroke_colour = {
+        0: "blue",
+        1: "red",
+        2: "lightgrey",
+        3: "yellow"
+    }
 
 
 def abort(msg):
@@ -108,21 +96,30 @@ def abort(msg):
 def rm2svg(input_file, output_name, coloured_annotations=False,
            x_width=default_x_width, y_width=default_y_width):
     # Read the file in memory. Consider optimising by reading chunks.
+    if coloured_annotations:
+        set_coloured_annots()
+
     with open(input_file, 'rb') as f:
         data = f.read()
     offset = 0
 
     # Is this a reMarkable .lines file?
-    expected_header=b'reMarkable .lines file, version=3          '
+    
+    expected_header=b'reMarkable .lines file, version=#          '
     if len(data) < len(expected_header) + 4:
         abort('File too short to be a valid file')
 
     fmt = '<{}sI'.format(len(expected_header))
     header, nlayers = struct.unpack_from(fmt, data, offset); offset += struct.calcsize(fmt)
     # print('header={} nlayers={}'.format(header, nlayers))
-    if header != expected_header or nlayers < 1:
+    re_expected_header = f"^{str(expected_header,'utf-8').replace('#','([345])')}$"
+    re_expected_header_match = re.match(re_expected_header, str(header ,'utf-8'))
+    if (re_expected_header is None) or (nlayers < 1):
         abort('Not a valid reMarkable file: <header={}> <nlayers={}'.format(header, nlayers))
-
+    _stroke_fmt_by_vers = {
+        '3': '<IIIfI',
+	'5': '<IIIfII' }
+    _stroke_fmt = _stroke_fmt_by_vers[re_expected_header_match.groups(1)[0]]
     output = open(output_name, 'w')
     output.write('<svg xmlns="http://www.w3.org/2000/svg" height="{}" width="{}">'.format(y_width, x_width)) # BEGIN Notebook
     output.write('''
@@ -135,18 +132,9 @@ def rm2svg(input_file, output_name, coloured_annotations=False,
             }
         ]]> </script>
     ''')
-    output.write('''
-        <style>
-        .c0 { stroke: navy; }
-        .c1 { stroke: maroon; }
-        .c2 { stroke: lightgrey; }
-        .c3 { stroke: white; }
-        </style>
-    ''')
 
     # Iterate through pages (There is at least one)
     output.write('<g id="p1" style="display:inline">')
-
     # Iterate through layers on the page (There is at least one)
     for layer in range(nlayers):
         # print('New layer')
@@ -156,8 +144,11 @@ def rm2svg(input_file, output_name, coloured_annotations=False,
         # print('nstrokes={}'.format(nstrokes))
         # Iterate through the strokes in the layer (If there is any)
         for stroke in range(nstrokes):
-            fmt = '<IIIfI'
-            pen, colour, i_unk, width, nsegments = struct.unpack_from(fmt, data, offset); offset += struct.calcsize(fmt)
+            fmt = _stroke_fmt
+            stroke_data = struct.unpack_from(fmt, data, offset)
+            offset += struct.calcsize(fmt)
+            pen, colour, i_unk, width = stroke_data[:4]
+            nsegments = stroke_data[-1]
             # print('pen={} colour={} i_unk={} width={} nsegments={}'.format(pen,colour,i_unk,width,nsegments))
             opacity = 1
             last_x = -1.; last_y = -1.
@@ -165,7 +156,7 @@ def rm2svg(input_file, output_name, coloured_annotations=False,
                 #print('Unexpected value at offset {}'.format(offset - 12))
             if pen == 0 or pen == 1:
                 pass # Dynamic width, will be truncated into several strokes
-            elif pen == 2 or pen == 4: # Pen / Fineliner
+            elif pen == 2 or pen == 4 or pen == 17: # Pen / Fineliner
                 width = 32 * width * width - 116 * width + 107
             elif pen == 3: # Marker
                 width = 64 * width - 112
@@ -183,23 +174,20 @@ def rm2svg(input_file, output_name, coloured_annotations=False,
                 opacity = 0.9
             elif pen == 8: # Erase area
                 opacity = 0.
-            else:
+            else: 
                 print('Unknown pen: {}'.format(pen))
                 opacity = 0.
 
             width /= 2.3 # adjust for transformation to A4
-
+            
             #print('Stroke {}: pen={}, colour={}, width={}, nsegments={}'.format(stroke, pen, colour, width, nsegments))
-            output.write('<polyline class="c{}" style="stroke-linecap:round;stroke-linejoin:bevel;fill:none;stroke-width:{:.3f};opacity:{}" points="'.format(colour, width, opacity)) # BEGIN stroke
+            output.write('<polyline style="fill:none;stroke:{};stroke-width:{:.3f};opacity:{}" points="'.format(stroke_colour[colour], width, opacity)) # BEGIN stroke
 
             # Iterate through the segments to form a polyline
             for segment in range(nsegments):
                 fmt = '<ffffff'
                 xpos, ypos, pressure, tilt, i_unk2, j_unk2 = struct.unpack_from(fmt, data, offset); offset += struct.calcsize(fmt)
                 # print('(x,y)=({},{})'.format(xpos,ypos))
-                if xpos<=0.1 or ypos<=0.1:
-                    continue
-                    #print(xpos, ypos, pressure, tilt, i_unk2, j_unk2)
                 #xpos += 60
                 #ypos -= 20
                 ratio = (y_width/x_width)/(1872/1404)
