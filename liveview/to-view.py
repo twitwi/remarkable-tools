@@ -94,6 +94,7 @@ def read_chunk_from_stdin(n):
 
 async def parse_input(ws_sv, file_rm, file_svg, file_pdf, convert_pdf_page_autorotate):
     global g_pdf
+    global g_page
     while True:
 
         try:
@@ -123,7 +124,8 @@ async def parse_input(ws_sv, file_rm, file_svg, file_pdf, convert_pdf_page_autor
         elif line == "PAGE":
             # full path to the .rm file
             page = await asyncio.get_event_loop().run_in_executor(None, read_line)
-            page = re.sub(r'.*/', '', page)[:-3]
+            pageuuid = await asyncio.get_event_loop().run_in_executor(None, read_line)
+            pageuuid = re.sub(r'.*/', '', page)[:-3]
             if g_pdf:
                 g_page = page
                 await lazy_generate_img_for_page(file_pdf, page, convert_pdf_page_autorotate)

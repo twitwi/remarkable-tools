@@ -2,8 +2,8 @@
 
 # NB: This file will be copied to the remarkable tablet to be run there.
 
-getRemarkablePathOfLastEditedPage() {
-    ls -1tr .local/share/remarkable/xochitl/*/*.rm | tail -1
+getRemarkablePathOfLastChangedDocument() {
+    ls -1trd .local/share/remarkable/xochitl/????????-????-????-????-???????????? | tail -1
 
     # not sure how to get the latest "viewed" page
     #local f
@@ -17,6 +17,10 @@ getRemarkablePathOfLastEditedPage() {
 log() {
     echo "$@" 1>&2
 }
+
+
+SELF=$$
+log SELF=$SELF
 
 log $@
 
@@ -40,6 +44,7 @@ log $last
 sendpageinfo() {
   echo PAGE
   echo "$1"
+  echo "$2"
 }
 sendnopdf() {
   echo NOPDF
@@ -100,12 +105,7 @@ watchjournalctl() {
 rm -f /tmp/liveview-uuid
 rm -f /tmp/liveview-page
 
-#if test "$1" = "//" ; then
-#  p=$(getRemarkablePathOfLastEditedPage)
-#else
-#  p="$1"
-#fi
-#f=$(dirname "$p")
+
 p=""
 
 sha=$(cat $0 | sha1sum | sed 's@ .*@@g')
@@ -117,18 +117,18 @@ if test \! "$sha" = "$2" ; then
   # trigger re-scp
 fi
 
-if test -f ~/.config/QtProject/qtlogging.ini ; then
-  if grep -q 'xochitl.documentworker.debug=true' ~/.config/QtProject/qtlogging.ini ; then
+if test -f /etc/xdg/QtProject/qtlogging.ini ; then
+  if grep -q 'xochitl.documentworker.debug=true' /etc/xdg/QtProject/qtlogging.ini ; then
     echo "##### already set for logging page change"
   else
     echo "##### log config present but no page change logging"
   fi
 else
   echo "##### SETTING DEBUG LOGS TO DETECT PAGE CHANGE"
-  mkdir -p .config/QtProject
-  printf "[Rules]\nxochitl.documentworker.debug=true\n" >> ~/.config/QtProject/qtlogging.ini
+  mkdir -p /etc/xdg/QtProject
+  printf "[Rules]\nxochitl.documentworker.debug=true\n" >> /etc/xdg/QtProject/qtlogging.ini
 fi
-    
+
 
 watchjournalctl &
 
@@ -138,13 +138,14 @@ log $p
 
 while true ; do
     if test "$1" = "//" ; then
-      newp=$(getRemarkablePathOfLastEditedPage)
       if test -f /tmp/liveview-page ; then
         pnum=$(cat /tmp/liveview-page)
+        rm -f /tmp/liveview-page
         if test -f /tmp/liveview-uuid ; then
           uuidpath="$(cat /tmp/liveview-uuid)"
+          rm -f /tmp/liveview-uuid
         else
-          uuidpath="$(dirname "$newp")"
+          uuidpath="$(getRemarkablePathOfLastChangedDocument)"
         fi
         pname=$(cat $uuidpath.content | awk -v P=$pnum '/"pages"/ {go=1; p=0; next} go && p==P {print; exit} go {p=p+1}' | sed -e 's@^[^"]*"@@g' -e 's@"[^$]*$@@g')
         newp="$uuidpath/$pname.rm"
@@ -165,7 +166,7 @@ while true ; do
           lastf="$f"
           livep=-1
         fi
-        sendpageinfo "$p"
+        sendpageinfo "$pnum" "$p"
       fi
     fi
     if test \! -f "$p" ; then
